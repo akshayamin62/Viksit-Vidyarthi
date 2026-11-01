@@ -3,93 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a1030" />
     <title>Center of Excellence</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
     <header class="site-header">
-      <div class="wrap header-inner">
+      <div class="header-inner">
         <a class="brand" href="/">
-          <img src="/favicon.svg" alt="" />
+          <img src="/logo.jpeg" alt="Viksit Vidyarthi" />
           <span><strong>Viksit Vidyarthi</strong><small>Viksit Bharat</small></span>
         </a>
-        <nav class="nav" data-nav>
+        <nav class="nav" data-nav aria-label="Main">
           <a href="/">Home</a>
           <a href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
-          <a class="is-active" href="/center-of-excellence.html">Center of Excellence</a>
+          <a class="is-active" aria-current="page" href="/center-of-excellence.html">Center of Excellence</a>
         </nav>
         <div class="header-actions">
-          <button class="btn btn-navy header-cta" type="button" data-open-modal>Start a Conversation</button>
-          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu"><span></span><span></span><span></span></button>
+          <button class="btn btn-ink header-cta" type="button" data-open-modal>Start a Conversation</button>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="page-hero">
+      <section class="page-hero" style="margin-top: 5vb;">
         <div class="wrap">
-          <p class="kicker">Advanced support</p>
+          <!-- <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Center of Excellence</span></nav> -->
+          <!-- <p class="chip"><i class="dot"></i>Advanced support</p> -->
           <h1>Center of Excellence</h1>
-          <p>A structured, long-term ecosystem for student development, education planning and career readiness within the institution. Select an item to see more.</p>
+          <p class="hero-sub">A structured, long-term ecosystem for student development, education planning and career readiness within the institution. Select an item to see more.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="wrap">
-          <div class="grid-2">
-            <button class="card" type="button" data-coe-item="Potential and readiness assessments" data-coe-copy="The Centre of Excellence may offer: student potential and career-readiness assessments.">
-              <h3>Potential and readiness assessments</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Education and career profiles" data-coe-copy="The Centre of Excellence may offer: individual Education and Career Development Profiles.">
-              <h3>Education and career profiles</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Education activity portfolios" data-coe-copy="The Centre of Excellence may offer: personalised Education Activity Portfolios.">
-              <h3>Education activity portfolios</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Long-term roadmaps" data-coe-copy="The Centre of Excellence may offer: long-term academic and career development roadmaps.">
-              <h3>Long-term roadmaps</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Skill and profile building" data-coe-copy="The Centre of Excellence may offer: skill-development and profile-building activities.">
-              <h3>Skill and profile building</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Higher-education guidance" data-coe-copy="The Centre of Excellence may offer: national and international higher-education guidance.">
-              <h3>Higher-education guidance</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Study-abroad readiness" data-coe-copy="The Centre of Excellence may offer: career-focused study-abroad readiness and preparation.">
-              <h3>Study-abroad readiness</h3>
-              <p>Select to read more</p>
-            </button>
-            <button class="card" type="button" data-coe-item="Progress monitoring" data-coe-copy="The Centre of Excellence may offer: student progress monitoring and periodic development reviews.">
-              <h3>Progress monitoring</h3>
-              <p>Select to read more</p>
-            </button>
+          <div class="coe-grid grid-4">
+            <button class="card card-btn" type="button" data-coe-item="Potential and readiness assessments" data-coe-copy="The Centre of Excellence may offer: student potential and career-readiness assessments."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg></span><h3>Potential and readiness assessments</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Education and career profiles" data-coe-copy="The Centre of Excellence may offer: individual Education and Career Development Profiles."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><h3>Education and career profiles</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Education activity portfolios" data-coe-copy="The Centre of Excellence may offer: personalised Education Activity Portfolios."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><h3>Education activity portfolios</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Long-term roadmaps" data-coe-copy="The Centre of Excellence may offer: long-term academic and career development roadmaps."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></svg></span><h3>Long-term roadmaps</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Skill and profile building" data-coe-copy="The Centre of Excellence may offer: skill-development and profile-building activities."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></span><h3>Skill and profile building</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Higher-education guidance" data-coe-copy="The Centre of Excellence may offer: national and international higher-education guidance."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3>Higher-education guidance</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Study-abroad readiness" data-coe-copy="The Centre of Excellence may offer: career-focused study-abroad readiness and preparation."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg></span><h3>Study-abroad readiness</h3><p>Select to read more</p></button>
+            <button class="card card-btn" type="button" data-coe-item="Progress monitoring" data-coe-copy="The Centre of Excellence may offer: student progress monitoring and periodic development reviews."><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg></span><h3>Progress monitoring</h3><p>Select to read more</p></button>
           </div>
-          <div class="card" data-coe-detail hidden style="margin-top:16px"></div>
+          <div class="detail" data-coe-detail hidden aria-live="polite"></div>
           <p class="note">The Centre of Excellence is optional. Scope, resources, responsibilities and commercial arrangements are defined separately through institutional collaboration.</p>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <div class="wrap cta-inner">
+          <div>
+            <h2>Explore a Centre of Excellence for your institution.</h2>
+            <p>Scope and arrangements are defined together, through institutional collaboration.</p>
+          </div>
+          <button class="btn btn-saffron" type="button" data-open-modal>Start a Conversation</button>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <div>
-          <strong>ADMITra CORE Systems Pvt. Ltd.</strong>
-          <p class="muted"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
-          <p class="muted"><a href="tel:+917045919074">+91 70 459 19 074</a> · <a href="mailto:hello@admitra.io">hello@admitra.io</a></p>
+      <div class="wrap">
+        <div class="footer-top">
+          <a class="brand brand-light" href="/">
+            <img src="/favicon.svg" alt="" />
+            <span><strong>Viksit Vidyarthi</strong><small>Viksit Bharat</small></span>
+          </a>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="/">Home</a>
+            <a href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
+            <a href="/center-of-excellence.html">Center of Excellence</a>
+          </nav>
         </div>
-        <p class="muted">An independent institutional student development initiative. No government endorsement is implied.</p>
+        <div class="footer-grid">
+          <div>
+            <strong>ADMITra CORE Systems Pvt. Ltd.</strong>
+            <p class="muted"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
+            <p class="muted"><a href="tel:+917045919074">+91 70 459 19 074</a> · <a href="mailto:hello@admitra.io">hello@admitra.io</a></p>
+          </div>
+          <p class="muted disclaimer">An independent institutional student development initiative. No government endorsement is implied.</p>
+        </div>
       </div>
     </footer>
 
@@ -101,11 +102,11 @@
         <p>Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd. Tell us about your institution and we will get in touch.</p>
         <form class="form" data-enquiry-form>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <div><label for="name">Your name</label><input id="name" name="name" required maxlength="120" /></div>
-          <div><label for="institution">Institution</label><input id="institution" name="institution" required maxlength="200" /></div>
-          <div><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
-          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required /></div>
-          <div>
+          <div><label for="name">Your name</label><input id="name" name="name" required maxlength="120" autocomplete="name" /></div>
+          <div><label for="institution">Institution</label><input id="institution" name="institution" required maxlength="200" autocomplete="organization" /></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel" /></div>
+          <div class="full">
             <label for="institution_type">Institution type</label>
             <select id="institution_type" name="institution_type" required>
               <option value="">Select</option>
@@ -114,7 +115,7 @@
               <option value="other">Other educational institution</option>
             </select>
           </div>
-          <div>
+          <div class="full">
             <label for="start_with">Where would you like to start?</label>
             <select id="start_with" name="start_with" required>
               <option value="">Select</option>
@@ -124,8 +125,8 @@
               <option value="center of excellence">Centre of Excellence</option>
             </select>
           </div>
-          <button class="btn btn-saffron" type="submit">Send enquiry</button>
-          <p class="form-status" data-form-status></p>
+          <button class="btn btn-saffron full" type="submit">Send enquiry</button>
+          <p class="form-status full" data-form-status role="status"></p>
         </form>
       </div>
     </div>

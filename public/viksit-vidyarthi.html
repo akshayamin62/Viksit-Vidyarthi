@@ -3,127 +3,134 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a1030" />
     <title>Viksit Vidyarthi for Viksit Bharat</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
     <header class="site-header">
-      <div class="wrap header-inner">
+      <div class="header-inner">
         <a class="brand" href="/">
-          <img src="/favicon.svg" alt="" />
+          <img src="/logo.jpeg" alt="Viksit Vidyarthi" />
           <span><strong>Viksit Vidyarthi</strong><small>Viksit Bharat</small></span>
         </a>
-        <nav class="nav" data-nav>
+        <nav class="nav" data-nav aria-label="Main">
           <a href="/">Home</a>
-          <a class="is-active" href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
+          <a class="is-active" aria-current="page" href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
           <a href="/center-of-excellence.html">Center of Excellence</a>
         </nav>
         <div class="header-actions">
-          <button class="btn btn-navy header-cta" type="button" data-open-modal>Start a Conversation</button>
-          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu"><span></span><span></span><span></span></button>
+          <button class="btn btn-ink header-cta" type="button" data-open-modal>Start a Conversation</button>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="page-hero">
+      <section class="page-hero" style="margin-top: 5vb;">
         <div class="wrap">
-          <p class="kicker">The idea</p>
+          <!-- <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Viksit Vidyarthi</span></nav> -->
+          <!-- <p class="chip"><i class="dot"></i>The idea</p> -->
           <h1>Viksit Vidyarthi for Viksit Bharat</h1>
-          <p>A comprehensive educational development initiative that prepares students, empowers teachers, engages parents and strengthens institutions to contribute to the national vision of Viksit Bharat 2047.</p>
+          <p class="hero-sub">A comprehensive educational development initiative that prepares students, empowers teachers, engages parents and strengthens institutions to contribute to the national vision of Viksit Bharat 2047.</p>
         </div>
       </section>
 
       <section class="section">
-        <div class="wrap">
+        <div class="wrap intro-split">
           <p class="quote">“A developed nation begins with a developed student.”</p>
-          <p class="lead" style="margin-top:28px">
-            India’s aspiration to become a developed nation by 2047 requires more than academic excellence. It needs young people who are intellectually capable, emotionally resilient, socially responsible, technologically adaptable and professionally competent.
-          </p>
-          <p class="lead">
-            Conventional approaches often weigh examination performance more heavily than the overall potential of students. This initiative bridges that gap by building a structured Student Development and Career Readiness Ecosystem inside schools and colleges.
-          </p>
+          <div class="prose">
+            <p class="lead">India’s aspiration to become a developed nation by 2047 requires more than academic excellence. It needs young people who are intellectually capable, emotionally resilient, socially responsible, technologically adaptable and professionally competent.</p>
+            <p class="lead">Conventional approaches often weigh examination performance more heavily than the overall potential of students. This initiative bridges that gap by building a structured Student Development and Career Readiness Ecosystem inside schools and colleges.</p>
+          </div>
         </div>
       </section>
 
-      <section class="section" style="padding-top:0">
+      <section class="section" id="pillars">
         <div class="wrap">
-          <h2>Three pillars, progress interconnected</h2>
-          <p class="lead">A flexible, institution-integrated programme. The goal is not another extracurricular activity, but a measurable, sustainable support system inside the educational environment.</p>
+          <div class="sec-head">
+            <h2>Three pillars, progress interconnected</h2>
+            <p class="lead">A flexible, institution-integrated programme. The goal is not another extracurricular activity, but a measurable, sustainable support system inside the educational environment.</p>
+          </div>
           <div class="tabs" data-tabs=".pillar-panel" role="tablist">
-            <button class="tab is-active" type="button" data-tab="pillar-student" aria-selected="true">Student development</button>
-            <button class="tab" type="button" data-tab="pillar-teacher" aria-selected="false">Teacher empowerment</button>
-            <button class="tab" type="button" data-tab="pillar-parent" aria-selected="false">Parent engagement</button>
+            <button class="tab tab-saffron is-active" type="button" data-tab="pillar-student" aria-selected="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Student development</button>
+            <button class="tab tab-green" type="button" data-tab="pillar-teacher" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20l4-4 4 4M7 9h6M7 12h3"/></svg>Teacher empowerment</button>
+            <button class="tab tab-ink" type="button" data-tab="pillar-parent" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.2c2.6.2 4.5 2 4.5 5.3"/></svg>Parent engagement</button>
           </div>
 
           <div id="pillar-student" class="panel is-active pillar-panel">
-            <p><strong>Objective:</strong> Develop self-aware, responsible, capable and career-conscious students.</p>
+            <p class="objective"><strong>Objective:</strong> Develop self-aware, responsible, capable and career-conscious students.</p>
             <div class="grid-2">
-              <article class="card"><h3>“I Before AI”</h3><p>Understanding human intelligence, personal potential and responsible use of artificial intelligence.</p></article>
-              <article class="card"><h3>Digital Discipline</h3><p>Managing screen time, digital distractions and technology dependence.</p></article>
-              <article class="card"><h3>Learning Beyond Examinations</h3><p>Encouraging curiosity, critical thinking, independent learning and knowledge application.</p></article>
-              <article class="card"><h3>Deal with Adversity</h3><p>Empowering students to face challenges with resilience and confidence.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>“I Before AI”</h3><p>Understanding human intelligence, personal potential and responsible use of artificial intelligence.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h3>Digital Discipline</h3><p>Managing screen time, digital distractions and technology dependence.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 8h6"/></svg></span><h3>Learning Beyond Examinations</h3><p>Encouraging curiosity, critical thinking, independent learning and knowledge application.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Deal with Adversity</h3><p>Empowering students to face challenges with resilience and confidence.</p></article>
             </div>
             <p class="note"><strong>Delivery:</strong> Student seminars, interactive workshops, development activities and guided counselling sessions.</p>
           </div>
 
           <div id="pillar-teacher" class="panel pillar-panel">
-            <p><strong>Objective:</strong> Enable teachers to become effective facilitators of academic, behavioural and personal development.</p>
+            <p class="objective"><strong>Objective:</strong> Enable teachers to become effective facilitators of academic, behavioural and personal development.</p>
             <div class="grid-2">
-              <article class="card"><h3>Teaching Tomorrow</h3><p>Understanding Gen Z and Gen Alpha: equips educators to engage and inspire these learners.</p></article>
-              <article class="card"><h3>Partners in Progress</h3><p>Building strong parent–teacher connections to support every student’s growth.</p></article>
-              <article class="card"><h3>Discipline with Dignity</h3><p>Building respectful, well-managed classrooms through trust and positive guidance.</p></article>
-              <article class="card"><h3>Managing Diversity</h3><p>Embracing differences and creating inclusive classrooms where every learner belongs.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20l4-4 4 4M7 9h6M7 12h3"/></svg></span><h3>Teaching Tomorrow</h3><p>Understanding Gen Z and Gen Alpha: equips educators to engage and inspire these learners.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.2c2.6.2 4.5 2 4.5 5.3"/></svg></span><h3>Partners in Progress</h3><p>Building strong parent–teacher connections to support every student’s growth.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>Discipline with Dignity</h3><p>Building respectful, well-managed classrooms through trust and positive guidance.</p></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-8-4.7-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.3 12 20 12 20z"/></svg></span><h3>Managing Diversity</h3><p>Embracing differences and creating inclusive classrooms where every learner belongs.</p></article>
             </div>
             <p class="note"><strong>Delivery:</strong> Faculty development workshops, interactive training sessions and practical classroom strategies.</p>
           </div>
 
           <div id="pillar-parent" class="panel pillar-panel">
-            <p><strong>Objective:</strong> Strengthen parents’ capabilities as developmental partners in their children’s education and career journey.</p>
+            <p class="objective"><strong>Objective:</strong> Strengthen parents’ capabilities as developmental partners in their children’s education and career journey.</p>
             <div class="grid-2">
-              <article class="card"><h3>Scientific and mindful parenting</h3></article>
-              <article class="card"><h3>Addressing digital dependency</h3></article>
-              <article class="card"><h3>Effective parent–child communication</h3></article>
-              <article class="card"><h3>Academic pressure and peer influence</h3></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></span><h3>Scientific and mindful parenting</h3></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h3>Addressing digital dependency</h3></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>Effective parent–child communication</h3></article>
+              <article class="card"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg></span><h3>Academic pressure and peer influence</h3></article>
             </div>
             <p class="note"><strong>Delivery:</strong> Parenting workshops, awareness programmes, interactive discussions and guided developmental resources.</p>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="why">
         <div class="wrap">
-          <h2>Why this initiative matters</h2>
-          <p class="lead">India needs young people who can turn education into competence, character, contribution and meaningful careers. These challenges stand in the way.</p>
-          <div class="tabs" data-filter=".challenge">
-            <button class="tab is-active" type="button" data-filter-value="all" aria-pressed="true">All</button>
-            <button class="tab" type="button" data-filter-value="Student & parent" aria-pressed="false">Student & parent</button>
-            <button class="tab" type="button" data-filter-value="Educator" aria-pressed="false">Educator</button>
+          <div class="sec-head">
+            <h2>Why this initiative matters</h2>
+            <p class="lead">India needs young people who can turn education into competence, character, contribution and meaningful careers. These challenges stand in the way.</p>
+          </div>
+          <div class="chips" data-filter=".challenge" role="group" aria-label="Filter challenges">
+            <button class="chip-btn is-active" type="button" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="chip-btn" type="button" data-filter-value="Student &amp; parent" aria-pressed="false">Student &amp; parent</button>
+            <button class="chip-btn" type="button" data-filter-value="Educator" aria-pressed="false">Educator</button>
           </div>
           <div class="grid-3">
-            <article class="card challenge" data-audience="Student & parent"><span class="tag">Student & parent</span><h3>Gap between achievement and readiness</h3><p>Students may do well in exams yet struggle with critical thinking, problem-solving, communication and applying knowledge. The shift needed: from exam-oriented education to learning-oriented development.</p></article>
-            <article class="card challenge" data-audience="Student & parent"><span class="tag">Student & parent</span><h3>Lack of early career planning</h3><p>Many students choose streams, subjects and careers without awareness of their abilities, interests or opportunities. The shift needed: informed, structured exploration from the middle-school years.</p></article>
-            <article class="card challenge" data-audience="Student & parent"><span class="tag">Student & parent</span><h3>Digital distraction</h3><p>Excess recreational screen time and fragmented attention can undermine disciplined learning. The shift needed: digital responsibility and self-regulation, not just restriction.</p></article>
-            <article class="card challenge" data-audience="Educator"><span class="tag">Educator</span><h3>Changing classroom dynamics</h3><p>Teachers face diverse learning preferences, behavioural challenges and evolving student–teacher relationships. The shift needed: engaging contemporary learners while keeping discipline and mutual respect.</p></article>
-            <article class="card challenge" data-audience="Student & parent"><span class="tag">Student & parent</span><h3>Parenting in a changing world</h3><p>Parents are unsure about academic choices, emerging careers, peer influence and technology. The shift needed: from pressure-driven supervision to informed developmental guidance.</p></article>
-            <article class="card challenge" data-audience="Educator"><span class="tag">Educator</span><h3>Employability and future skills</h3><p>Qualifications alone do not guarantee competence. Industries need technological literacy, communication, creativity, collaboration and continuous learning. The shift needed: career readiness well before the job market.</p></article>
+            <article class="card challenge" data-audience="Student &amp; parent"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg></span><span class="tag">Student &amp; parent</span><h3>Gap between achievement and readiness</h3><p>Students may do well in exams yet struggle with critical thinking, problem-solving, communication and applying knowledge.</p><p class="shift"><b>The shift:</b> from exam-oriented education to learning-oriented development.</p></article>
+            <article class="card challenge" data-audience="Student &amp; parent"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span><span class="tag">Student &amp; parent</span><h3>Lack of early career planning</h3><p>Many students choose streams, subjects and careers without awareness of their abilities, interests or opportunities.</p><p class="shift"><b>The shift:</b> informed, structured exploration from the middle-school years.</p></article>
+            <article class="card challenge" data-audience="Student &amp; parent"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><span class="tag">Student &amp; parent</span><h3>Digital distraction</h3><p>Excess recreational screen time and fragmented attention can undermine disciplined learning.</p><p class="shift"><b>The shift:</b> digital responsibility and self-regulation, not just restriction.</p></article>
+            <article class="card challenge" data-audience="Educator"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20l4-4 4 4M7 9h6M7 12h3"/></svg></span><span class="tag">Educator</span><h3>Changing classroom dynamics</h3><p>Teachers face diverse learning preferences, behavioural challenges and evolving student–teacher relationships.</p><p class="shift"><b>The shift:</b> engaging contemporary learners while keeping discipline and mutual respect.</p></article>
+            <article class="card challenge" data-audience="Student &amp; parent"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.2c2.6.2 4.5 2 4.5 5.3"/></svg></span><span class="tag">Student &amp; parent</span><h3>Parenting in a changing world</h3><p>Parents are unsure about academic choices, emerging careers, peer influence and technology.</p><p class="shift"><b>The shift:</b> from pressure-driven supervision to informed developmental guidance.</p></article>
+            <article class="card challenge" data-audience="Educator"><span class="card-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><span class="tag">Educator</span><h3>Employability and future skills</h3><p>Qualifications alone do not guarantee competence. Industries need technological literacy, communication, creativity, collaboration and continuous learning.</p><p class="shift"><b>The shift:</b> career readiness well before the job market.</p></article>
           </div>
           <p class="note"><strong>Why institutions must take the lead.</strong> Schools and colleges reach students in their most formative years. Addressing these challenges systematically lets them become centres of holistic development, complementing the aims of India’s National Education Policy 2020: holistic development, experiential learning, critical thinking and multidisciplinary education.</p>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="features">
         <div class="wrap">
-          <h2>Features, advantages and benefits</h2>
-          <div class="tabs" data-tabs=".fab-panel">
-            <button class="tab is-active" type="button" data-tab="fab-students" aria-selected="true">For students</button>
-            <button class="tab" type="button" data-tab="fab-institution" aria-selected="false">For your institution</button>
+          <div class="sec-head">
+            <h2>Features, advantages and benefits</h2>
+            <p class="lead">What is delivered, why it works and what changes as a result, for both students and institutions.</p>
+          </div>
+          <div class="tabs" data-tabs=".fab-panel" role="tablist">
+            <button class="tab tab-saffron is-active" type="button" data-tab="fab-students" aria-selected="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>For students</button>
+            <button class="tab tab-green" type="button" data-tab="fab-institution" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>For your institution</button>
           </div>
           <div id="fab-students" class="panel is-active fab-panel table">
             <div class="row h"><span>Features</span><span>Advantages</span><span>Benefits</span></div>
@@ -148,65 +155,94 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="how-it-works">
         <div class="wrap">
-          <h2>How it works in your institution</h2>
-          <p class="lead">A progressive engagement model in six stages. Choose a stage to read it.</p>
+          <div class="sec-head">
+            <h2>How it works in your institution</h2>
+            <p class="lead">A progressive engagement model in six stages. Choose a stage to read it.</p>
+          </div>
           <div class="split">
             <div class="stage-list">
-              <button type="button" data-stage class="is-active">Stage 1: Awareness</button>
-              <button type="button" data-stage>Stage 2: Institutional needs assessment</button>
-              <button type="button" data-stage>Stage 3: Development programme design</button>
-              <button type="button" data-stage>Stage 4: Structured intervention</button>
-              <button type="button" data-stage>Stage 5: Centre of Excellence</button>
-              <button type="button" data-stage>Stage 6: Review and continuous improvement</button>
+              <button type="button" data-stage class="is-active">Awareness</button>
+              <button type="button" data-stage>Institutional needs assessment</button>
+              <button type="button" data-stage>Development programme design</button>
+              <button type="button" data-stage>Structured intervention</button>
+              <button type="button" data-stage>Centre of Excellence</button>
+              <button type="button" data-stage>Review and continuous improvement</button>
             </div>
-            <div class="card" data-stage-panel></div>
+            <div class="stage-card" data-stage-panel aria-live="polite"></div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="advantages">
         <div class="wrap">
-          <h2>The advantages in a nutshell</h2>
-          <p class="lead">Institutions move from providing education to becoming active partners in building students’ futures.</p>
-          <div class="grid-2">
-            <article class="card">Strengthen their commitment to holistic education.</article>
-            <article class="card">Offer differentiated developmental opportunities to students.</article>
-            <article class="card">Build teacher capability through focused professional development.</article>
-            <article class="card">Improve parent engagement and institutional relationships.</article>
-            <article class="card">Introduce structured education and career guidance.</article>
-            <article class="card">Establish long-term support through a Centre of Excellence.</article>
-            <article class="card">Show alignment with India’s aspirations for Viksit Bharat @2047.</article>
+          <div class="sec-head">
+            <h2>The advantages in a nutshell</h2>
+            <p class="lead">Institutions move from providing education to becoming active partners in building students’ futures.</p>
+          </div>
+          <div class="adv-grid">
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Strengthen their commitment to holistic education.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Offer differentiated developmental opportunities to students.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Build teacher capability through focused professional development.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Improve parent engagement and institutional relationships.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Introduce structured education and career guidance.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Establish long-term support through a Centre of Excellence.</p></article>
+            <article class="adv"><span class="tick"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Show alignment with India’s aspirations for Viksit Bharat .</p></article>
           </div>
           <p class="note">The initiative complements your existing academic framework. It does not replace your curriculum or teaching systems.</p>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="vision">
         <div class="wrap">
-          <h2>Our vision. Your partnership. Students’ futures.</h2>
-          <p class="lead">Meaningful educational development begins with understanding the student as an individual. Our philosophy is built around five progressive outcomes.</p>
-          <div class="outcomes">
-            <div class="outcome"><span>01</span><strong>Discover potential</strong></div>
-            <div class="outcome"><span>02</span><strong>Develop capabilities</strong></div>
-            <div class="outcome"><span>03</span><strong>Build character</strong></div>
-            <div class="outcome"><span>04</span><strong>Prepare for the future</strong></div>
-            <div class="outcome"><span>05</span><strong>Contribute to the nation</strong></div>
+          <div class="sec-head">
+            <h2>Our vision. Your partnership. Students’ futures.</h2>
+            <p class="lead">Meaningful educational development begins with understanding the student as an individual. Our philosophy is built around five progressive outcomes.</p>
           </div>
-          <p class="quote">“Viksit Bharat” cannot be built through infrastructure and economic growth alone. It must also be built through capable, conscious and future-ready citizens.</p>
+          <div class="outcomes">
+            <div class="outcome"><span>1</span><strong>Discover potential</strong></div>
+            <div class="outcome"><span>2</span><strong>Develop capabilities</strong></div>
+            <div class="outcome"><span>3</span><strong>Build character</strong></div>
+            <div class="outcome"><span>4</span><strong>Prepare for the future</strong></div>
+            <div class="outcome"><span>5</span><strong>Contribute to the nation</strong></div>
+          </div>
+          <p class="quote quote-wide">“Viksit Bharat” cannot be built through infrastructure and economic growth alone. It must also be built through capable, conscious and future-ready citizens.</p>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <div class="wrap cta-inner">
+          <div>
+            <h2>Bring this to your institution.</h2>
+            <p>Tell us about your school or college and we will get in touch.</p>
+          </div>
+          <button class="btn btn-saffron" type="button" data-open-modal>Start a Conversation</button>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <div>
-          <strong>ADMITra CORE Systems Pvt. Ltd.</strong>
-          <p class="muted"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
-          <p class="muted"><a href="tel:+917045919074">+91 70 459 19 074</a> · <a href="mailto:hello@admitra.io">hello@admitra.io</a></p>
+      <div class="wrap">
+        <div class="footer-top">
+          <a class="brand brand-light" href="/">
+            <img src="/favicon.svg" alt="" />
+            <span><strong>Viksit Vidyarthi</strong><small>Viksit Bharat</small></span>
+          </a>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="/">Home</a>
+            <a href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
+            <a href="/center-of-excellence.html">Center of Excellence</a>
+          </nav>
         </div>
-        <p class="muted">An independent institutional student development initiative. No government endorsement is implied.</p>
+        <div class="footer-grid">
+          <div>
+            <strong>ADMITra CORE Systems Pvt. Ltd.</strong>
+            <p class="muted"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
+            <p class="muted"><a href="tel:+917045919074">+91 70 459 19 074</a> · <a href="mailto:hello@admitra.io">hello@admitra.io</a></p>
+          </div>
+          <p class="muted disclaimer">An independent institutional student development initiative. No government endorsement is implied.</p>
+        </div>
       </div>
     </footer>
 
@@ -218,11 +254,11 @@
         <p>Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd. Tell us about your institution and we will get in touch.</p>
         <form class="form" data-enquiry-form>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <div><label for="name">Your name</label><input id="name" name="name" required maxlength="120" /></div>
-          <div><label for="institution">Institution</label><input id="institution" name="institution" required maxlength="200" /></div>
-          <div><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
-          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required /></div>
-          <div>
+          <div><label for="name">Your name</label><input id="name" name="name" required maxlength="120" autocomplete="name" /></div>
+          <div><label for="institution">Institution</label><input id="institution" name="institution" required maxlength="200" autocomplete="organization" /></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel" /></div>
+          <div class="full">
             <label for="institution_type">Institution type</label>
             <select id="institution_type" name="institution_type" required>
               <option value="">Select</option>
@@ -231,7 +267,7 @@
               <option value="other">Other educational institution</option>
             </select>
           </div>
-          <div>
+          <div class="full">
             <label for="start_with">Where would you like to start?</label>
             <select id="start_with" name="start_with" required>
               <option value="">Select</option>
@@ -241,8 +277,8 @@
               <option value="center of excellence">Centre of Excellence</option>
             </select>
           </div>
-          <button class="btn btn-saffron" type="submit">Send enquiry</button>
-          <p class="form-status" data-form-status></p>
+          <button class="btn btn-saffron full" type="submit">Send enquiry</button>
+          <p class="form-status full" data-form-status role="status"></p>
         </form>
       </div>
     </div>

@@ -9,9 +9,23 @@
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
-      nav.classList.toggle("is-open");
+      const open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
     });
   }
+
+  const header = document.querySelector(".site-header");
+  function onScroll() {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   function openModal() {
     if (!modal) return;
@@ -56,6 +70,7 @@
           b.classList.toggle("is-active", b === button);
           b.setAttribute("aria-selected", b === button ? "true" : "false");
         });
+        if (box.parentElement) { /* keep focus context */ }
         panels.forEach(function (panel) {
           panel.classList.toggle("is-active", panel.id === id);
         });
@@ -86,15 +101,25 @@
     button.addEventListener("click", function () {
       if (!coeDetail) return;
       coeDetail.hidden = false;
-      coeDetail.innerHTML =
-        "<h3>" +
-        button.getAttribute("data-coe-item") +
-        "</h3><p>" +
-        button.getAttribute("data-coe-copy") +
-        "</p>";
+      coeDetail.innerHTML = "";
+      const text = document.createElement("div");
+      const h = document.createElement("h3");
+      h.textContent = button.getAttribute("data-coe-item");
+      const p = document.createElement("p");
+      p.textContent = button.getAttribute("data-coe-copy");
+      text.appendChild(h);
+      text.appendChild(p);
+      const cta = document.createElement("button");
+      cta.type = "button";
+      cta.className = "btn btn-saffron";
+      cta.textContent = "Discuss this with us";
+      cta.addEventListener("click", openModal);
+      coeDetail.appendChild(text);
+      coeDetail.appendChild(cta);
       document.querySelectorAll("[data-coe-item]").forEach(function (b) {
         b.classList.toggle("is-active", b === button);
       });
+      coeDetail.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
   });
 
@@ -133,16 +158,14 @@
     stageButtons.forEach(function (b, i) {
       b.classList.toggle("is-active", i === index);
     });
+    let bar = "";
+    for (let i = 0; i < stages.length; i++) bar += "<i" + (i <= index ? " class='on'" : "") + "></i>";
     stagePanel.innerHTML =
-      "<p class='kicker'>Stage " +
-      (index + 1) +
-      " of 6</p><h3>" +
-      stage[0] +
-      "</h3><p>" +
-      stage[1] +
-      "</p><div class='hero-actions'>" +
-      (index < 5
-        ? "<button class='btn btn-navy' type='button' data-next-stage>Next stage</button>"
+      "<div class='stage-bar' aria-hidden='true'>" + bar + "</div>" +
+      "<p class='kicker'>Stage " + (index + 1) + " of " + stages.length + "</p><h3>" +
+      stage[0] + "</h3><p>" + stage[1] + "</p><div class='hero-actions'>" +
+      (index < stages.length - 1
+        ? "<button class='btn btn-ink' type='button' data-next-stage>Next stage</button>"
         : "<button class='btn btn-saffron' type='button' data-open-modal>Discuss your institution</button>") +
       "</div>";
     const next = stagePanel.querySelector("[data-next-stage]");
