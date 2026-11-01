@@ -41,11 +41,24 @@
     document.body.classList.remove("modal-open");
   }
 
+  function closeNav() {
+    if (!nav || !toggle) return;
+    nav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
   document.querySelectorAll("[data-open-modal]").forEach(function (el) {
     el.addEventListener("click", function (event) {
       event.preventDefault();
+      closeNav();
       openModal();
     });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!nav || !toggle || !nav.classList.contains("is-open")) return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    closeNav();
   });
 
   document.querySelectorAll("[data-close-modal]").forEach(function (el) {
@@ -53,7 +66,10 @@
   });
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") closeModal();
+    if (event.key === "Escape") {
+      closeModal();
+      closeNav();
+    }
   });
 
   if (video && frame && video.getAttribute("src")) {
@@ -184,6 +200,23 @@
     });
   });
   if (stageButtons.length) showStage(0);
+
+  function applyHash() {
+    var hash = (location.hash || "").replace("#", "");
+    var map = {
+      "pillars-student": "pillar-student",
+      "pillars-teacher": "pillar-teacher",
+      "pillars-parent": "pillar-parent",
+    };
+    var tabId = map[hash];
+    if (!tabId) return;
+    var btn = document.querySelector('[data-tab="' + tabId + '"]');
+    if (btn) btn.click();
+    var section = document.getElementById("pillars");
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  window.addEventListener("hashchange", applyHash);
+  applyHash();
 
   if (form) {
     form.addEventListener("submit", async function (event) {
