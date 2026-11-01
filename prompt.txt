@@ -1,0 +1,48 @@
+yes now i want to create a website.
+
+i will tell you the stucture.
+
+it has mainly 3 pages.
+home page, Viksit Vidyarthi for Viksit Bharat,center of excellence.
+
+All pages has navbar and footer.
+
+a) home page consist of 
+main sentence : "Developing students.
+Building a developed India."
+sub sentence
+ "A proposal to set up a structured ecosystem for student development, teacher empowerment and parent engagement, built for an employable career."
+
+both align on left side.
+and right side has one video, which will i save here later.
+
+below this above two line it has two buttom 
+a) Viksit Vidyarthi for Viksit Bharat
+b) Center of Excellence.
+
+both redirect them to their indiviual pages.
+
+IN nav bar there is one buttom "Start a Conversaation"
+on clicking this, it open a modal form 
+
+Begin an institutional conversation
+Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd. Tell us about your institution and we will get in touch.
+
+Your name
+Institution
+Email
+Phone
+Institution type: school or college or other instistiualnal type
+Where would you like to start?
+Student programmes or parent programms or teacher workshops or center of excellence.
+Send enquiry.
+
+i will provide email and its password for sending mail and mail will be send to "akshay.amin.62@gmail.com"
+
+add all this information in .env.
+
+
+
+Create this all thing now.
+Theme of this webiste is India Flag type.
+So make sure to create this and stick to this

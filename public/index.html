@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viksit Vidyarthi – Viksit Bharat</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <img src="/favicon.svg" alt="" />
+          <span><strong>Viksit Vidyarthi</strong><small>Viksit Bharat</small></span>
+        </a>
+        <nav class="nav" data-nav>
+          <a class="is-active" href="/">Home</a>
+          <a href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
+          <a href="/center-of-excellence.html">Center of Excellence</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn btn-navy header-cta" type="button" data-open-modal>Start a Conversation</button>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <h1>Developing students.<br />Building a developed India.</h1>
+            <p class="lede">
+              A proposal to set up a structured ecosystem for student development, teacher
+              empowerment and parent engagement, built for an employable career.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-saffron" href="/viksit-vidyarthi.html">Viksit Vidyarthi for Viksit Bharat</a>
+              <a class="btn btn-green" href="/center-of-excellence.html">Center of Excellence</a>
+            </div>
+          </div>
+          <div class="video-frame" data-video-frame>
+            <video data-hero-video controls playsinline src=""></video>
+            <p class="video-fallback">Your film will play here. Add it to assets/video and set the player source.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <strong>ADMITra CORE Systems Pvt. Ltd.</strong>
+          <p class="muted"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
+          <p class="muted"><a href="tel:+917045919074">+91 70 459 19 074</a> · <a href="mailto:hello@admitra.io">hello@admitra.io</a></p>
+        </div>
+        <p class="muted">An independent institutional student development initiative. No government endorsement is implied.</p>
+      </div>
+    </footer>
+
+    <div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+        <h2 id="enquiry-title">Begin an institutional conversation</h2>
+        <p>Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd. Tell us about your institution and we will get in touch.</p>
+        <form class="form" data-enquiry-form>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <div><label for="name">Your name</label><input id="name" name="name" required maxlength="120" /></div>
+          <div><label for="institution">Institution</label><input id="institution" name="institution" required maxlength="200" /></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required /></div>
+          <div>
+            <label for="institution_type">Institution type</label>
+            <select id="institution_type" name="institution_type" required>
+              <option value="">Select</option>
+              <option value="school">School</option>
+              <option value="college">College</option>
+              <option value="other">Other educational institution</option>
+            </select>
+          </div>
+          <div>
+            <label for="start_with">Where would you like to start?</label>
+            <select id="start_with" name="start_with" required>
+              <option value="">Select</option>
+              <option value="student programmes">Student programmes</option>
+              <option value="teacher workshops">Teacher workshops</option>
+              <option value="parent programmes">Parent programmes</option>
+              <option value="center of excellence">Centre of Excellence</option>
+            </select>
+          </div>
+          <button class="btn btn-saffron" type="submit">Send enquiry</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
