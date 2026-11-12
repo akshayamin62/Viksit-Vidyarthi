@@ -73,11 +73,18 @@ export default function HomePage() {
           }
           text="A progressive engagement model in six stages, shaped around your institution’s needs."
         />
-        <ol className="mb-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {["Awareness", "Institutional needs assessment", "Development programme design", "Structured intervention", "Centre of Excellence", "Review and continuous improvement"].map((item, index) => (
-            <li key={item} className={`rounded-[20px] p-5 pt-16 text-[0.98rem] shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)] ${index === 4 ? "bg-ink text-white" : "bg-white"}`}>
-              <span className={`mb-4 grid size-9 place-items-center rounded-full font-display font-bold ${index === 4 ? "bg-saffron text-[#1f1000]" : "bg-paper text-ink"}`}>{index + 1}</span>
-              <b>{item}</b>
+        <ol className="mb-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          {[
+            ["Awareness", "bg-white text-ink shadow-[0_16px_40px_-28px_rgba(10,16,48,.45)] ring-1 ring-ink/8", "text-ink/25"],
+            ["Institutional needs assessment", "bg-[#fff8f2] text-ink shadow-[0_16px_40px_-28px_rgba(255,138,31,.55)] ring-1 ring-saffron/20", "text-[#f0b27a]"],
+            ["Development programme design", "bg-[#ffe8cc] text-ink shadow-[0_16px_40px_-24px_rgba(255,138,31,.5)]", "text-[#e08a2e]"],
+            ["Structured intervention", "bg-saffron text-[#1f1000] shadow-[0_18px_36px_-18px_rgba(255,138,31,.75)]", "text-[#1f1000]/35"],
+            ["Centre of Excellence", "bg-ink text-white shadow-[0_22px_40px_-18px_rgba(10,16,48,.7)]", "text-saffron"],
+            ["Review and continuous improvement", "bg-green text-white shadow-[0_18px_36px_-18px_rgba(15,157,88,.65)]", "text-white/40"],
+          ].map(([item, card, numeral], index) => (
+            <li key={item} className={`flex min-h-[220px] flex-col justify-between rounded-[28px] p-5 ${card}`}>
+              <span className={`font-display text-5xl leading-none font-semibold ${numeral}`}>{index + 1}</span>
+              <b className="font-display text-lg leading-tight font-semibold">{item}</b>
             </li>
           ))}
         </ol>

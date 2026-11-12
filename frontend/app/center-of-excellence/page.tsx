@@ -1,18 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useEnquiry } from "@/components/enquiry";
+import { Ico } from "@/components/icons";
 import { btnSaffron } from "@/lib/ui";
 
-const items = [
-  ["Potential and readiness assessments", "The Centre of Excellence may offer: student potential and career-readiness assessments."],
-  ["Education and career profiles", "The Centre of Excellence may offer: individual Education and Career Development Profiles."],
-  ["Education activity portfolios", "The Centre of Excellence may offer: personalised Education Activity Portfolios."],
-  ["Long-term roadmaps", "The Centre of Excellence may offer: long-term academic and career development roadmaps."],
-  ["Skill and profile building", "The Centre of Excellence may offer: skill-development and profile-building activities."],
-  ["Higher-education guidance", "The Centre of Excellence may offer: national and international higher-education guidance."],
-  ["Study-abroad readiness", "The Centre of Excellence may offer: career-focused study-abroad readiness and preparation."],
-  ["Progress monitoring", "The Centre of Excellence may offer: student progress monitoring and periodic development reviews."],
+const items: { title: string; copy: string; plate: string; icon: ReactNode }[] = [
+  {
+    title: "Potential and readiness assessments",
+    copy: "The Centre of Excellence may offer: student potential and career-readiness assessments.",
+    plate: "bg-[#fff1e0] text-[#d96a00]",
+    icon: <><circle cx="11" cy="11" r="6" /><path d="m20 20-3.5-3.5M11 8v3l2 1.5" /></>,
+  },
+  {
+    title: "Education and career profiles",
+    copy: "The Centre of Excellence may offer: individual Education and Career Development Profiles.",
+    plate: "bg-[#e8eeff] text-[#2742e0]",
+    icon: <><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="9" r="2.2" /><path d="M8 16c.8-1.4 2.2-2 4-2s3.2.6 4 2" /></>,
+  },
+  {
+    title: "Education activity portfolios",
+    copy: "The Centre of Excellence may offer: personalised Education Activity Portfolios.",
+    plate: "bg-[#e2f5ea] text-[#0a6e3d]",
+    icon: <><path d="M4 7.5 12 4l8 3.5L12 11 4 7.5Z" /><path d="M4 12.5 12 16l8-3.5" /><path d="M4 16.5 12 20l8-3.5" /></>,
+  },
+  {
+    title: "Long-term roadmaps",
+    copy: "The Centre of Excellence may offer: long-term academic and career development roadmaps.",
+    plate: "bg-[#fff1e0] text-[#d96a00]",
+    icon: <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="18" r="2" /><path d="M8 7.5c4 0 4 9 8 9" /></>,
+  },
+  {
+    title: "Skill and profile building",
+    copy: "The Centre of Excellence may offer: skill-development and profile-building activities.",
+    plate: "bg-[#e8eeff] text-[#2742e0]",
+    icon: <><path d="M12 3.5 13.6 8H18l-3.6 2.7 1.4 4.3L12 12.8 8.2 15l1.4-4.3L6 8h4.4L12 3.5Z" /></>,
+  },
+  {
+    title: "Higher-education guidance",
+    copy: "The Centre of Excellence may offer: national and international higher-education guidance.",
+    plate: "bg-[#e2f5ea] text-[#0a6e3d]",
+    icon: <><path d="M3 10 12 6l9 4-9 4-9-4Z" /><path d="M7 12v4c0 1.2 2.2 2.5 5 2.5s5-1.3 5-2.5v-4" /><path d="M21 10v6" /></>,
+  },
+  {
+    title: "Study-abroad readiness",
+    copy: "The Centre of Excellence may offer: career-focused study-abroad readiness and preparation.",
+    plate: "bg-[#fff1e0] text-[#d96a00]",
+    icon: <><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c2.2 2.4 3.3 5.1 3.3 8S14.2 17.6 12 20c-2.2-2.4-3.3-5.1-3.3-8S9.8 6.4 12 4Z" /></>,
+  },
+  {
+    title: "Progress monitoring",
+    copy: "The Centre of Excellence may offer: student progress monitoring and periodic development reviews.",
+    plate: "bg-[#e8eeff] text-[#2742e0]",
+    icon: <><path d="M4 19V5" /><path d="M4 19h16" /><path d="m7 14 3.2-3.2 2.4 2.2L18 7" /></>,
+  },
 ];
 
 const hero =
@@ -33,18 +74,29 @@ export default function CentrePage() {
 
       <section className="mx-auto w-full max-w-[1200px] px-6 py-20">
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {items.map(([title], index) => (
-            <button key={title} className={`min-h-[180px] rounded-[20px] p-7 text-left ${active === index ? "bg-ink text-white" : "bg-white text-ink shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`} type="button" onClick={() => setActive(index)}>
-              <h3 className="font-display text-xl font-bold">{title}</h3>
-              <p className={`mt-3 text-sm font-semibold ${active === index ? "text-saffron" : "text-[#d96a00]"}`}>Select to read more</p>
-            </button>
-          ))}
+          {items.map((item, index) => {
+            const selected = active === index;
+            return (
+              <button key={item.title} className={`group flex min-h-[230px] flex-col rounded-[28px] p-6 text-left transition hover:-translate-y-1 ${selected ? "bg-ink text-white shadow-[0_18px_40px_-22px_rgba(10,16,48,.7)]" : "bg-white text-ink shadow-[0_16px_40px_-28px_rgba(10,16,48,.55)] ring-1 ring-ink/8"}`} type="button" aria-pressed={selected} onClick={() => setActive(index)}>
+                <span className={`grid size-12 place-items-center rounded-2xl ${selected ? "bg-saffron text-[#1f1000]" : item.plate}`}>
+                  <Ico className="size-6">{item.icon}</Ico>
+                </span>
+                <h3 className="mt-5 font-display text-[1.45rem] leading-tight font-semibold">{item.title}</h3>
+                <span className={`mt-auto pt-5 text-sm font-semibold ${selected ? "text-saffron" : "text-[#d96a00]"}`}>Read more</span>
+              </button>
+            );
+          })}
         </div>
         {active !== null ? (
           <div className="mt-5 flex flex-wrap items-center justify-between gap-6 rounded-[32px] bg-ink p-8 text-white md:p-10">
-            <div>
-              <h3 className="font-display text-3xl font-semibold">{items[active][0]}</h3>
-              <p className="mt-2 max-w-2xl text-lg text-white/85">{items[active][1]}</p>
+            <div className="flex items-start gap-5">
+              <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-saffron text-[#1f1000]">
+                <Ico className="size-7">{items[active].icon}</Ico>
+              </span>
+              <div>
+                <h3 className="font-display text-3xl font-semibold">{items[active].title}</h3>
+                <p className="mt-2 max-w-2xl text-lg text-white/85">{items[active].copy}</p>
+              </div>
             </div>
             <button className={btnSaffron} type="button" onClick={open}>Discuss this with us</button>
           </div>

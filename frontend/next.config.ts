@@ -1,8 +1,19 @@
+import os from "os";
 import type { NextConfig } from "next";
+
+function lanHosts() {
+  const hosts = new Set<string>(["10.115.6.95", "172.20.10.2"]);
+  for (const list of Object.values(os.networkInterfaces())) {
+    for (const net of list ?? []) {
+      if (net.family === "IPv4" && !net.internal) hosts.add(net.address);
+    }
+  }
+  return [...hosts];
+}
 
 const nextConfig: NextConfig = {
   /* config options here */
-  allowedDevOrigins: ["172.20.10.2"],
+  allowedDevOrigins: lanHosts(),
   cacheComponents: true,
   partialPrefetching: true,
   async rewrites() {

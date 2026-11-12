@@ -126,7 +126,7 @@ export default function ViksitPage() {
       </section>
 
       <section className="mx-auto grid w-full max-w-[1200px] gap-12 px-6 py-24 lg:grid-cols-2">
-        <p className="flex items-end rounded-[32px] bg-ink p-10 font-display text-[clamp(1.7rem,3vw,2.5rem)] leading-tight font-bold text-white [background:radial-gradient(60%_80%_at_0%_0%,rgba(255,138,31,.4),transparent_60%),#0a1030]">“A developed nation begins with a developed student.”</p>
+        <p className="flex items-center justify-center rounded-[32px] bg-ink p-10 text-center font-display text-[clamp(1.7rem,3vw,2.5rem)] leading-tight font-bold text-white [background:radial-gradient(60%_80%_at_0%_0%,rgba(255,138,31,.4),transparent_60%),#0a1030]">“A developed nation begins with a developed student.”</p>
         <div className="grid content-center gap-5 text-lg text-mute">
           <p>India’s aspiration to become a developed nation by 2047 requires more than academic excellence. It needs young people who are intellectually capable, emotionally resilient, socially responsible, technologically adaptable and professionally competent.</p>
           <p>Conventional approaches often weigh examination performance more heavily than the overall potential of students. This initiative bridges that gap by building a structured Student Development and Career Readiness Ecosystem inside schools and colleges.</p>
@@ -144,9 +144,13 @@ export default function ViksitPage() {
           text="A flexible, institution-integrated programme. The goal is not another extracurricular activity, but a measurable, sustainable support system inside the educational environment."
         />
         <div className="inline-flex flex-wrap gap-1 rounded-full bg-ink/10 p-1" role="tablist">
-          {(["student", "teacher", "parent"] as const).map((key) => (
-            <button key={key} className={`rounded-full px-5 py-3 font-semibold ${pillar === key ? "bg-white text-ink shadow" : "text-mute"}`} type="button" onClick={() => setPillar(key)}>
-              {key === "student" ? "Student development" : key === "teacher" ? "Teacher empowerment" : "Parent engagement"}
+          {([
+            ["student", "Student development", "bg-saffron text-[#1f1000]", "bg-[#fff1e0] text-[#9a4e00]"],
+            ["teacher", "Teacher empowerment", "bg-white text-ink shadow", "bg-white/70 text-ink/70"],
+            ["parent", "Parent engagement", "bg-green text-white", "bg-[#e2f5ea] text-[#0a6e3d]"],
+          ] as const).map(([key, label, active, idle]) => (
+            <button key={key} className={`rounded-full px-5 py-3 font-semibold ${pillar === key ? active : idle}`} type="button" aria-selected={pillar === key} onClick={() => setPillar(key)}>
+              {label}
             </button>
           ))}
         </div>
@@ -210,7 +214,7 @@ export default function ViksitPage() {
           {rows.map((row) => (
             <div key={row[0]} className="grid gap-2 md:grid-cols-3">
               {row.map((cell, index) => (
-                <span key={cell} className={`rounded-xl px-5 py-4 ${index === 0 ? "bg-white font-display font-bold text-ink shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>{cell}</span>
+                <span key={cell} className={`rounded-xl px-5 py-4 ${index === 0 ? "bg-[#fff1e0] font-display font-bold text-[#1f1000]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>{cell}</span>
               ))}
             </div>
           ))}

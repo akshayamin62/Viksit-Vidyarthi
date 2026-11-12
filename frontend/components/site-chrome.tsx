@@ -45,34 +45,46 @@ function Header() {
   }, []);
 
   return (
-    <header data-site-header className="pointer-events-none sticky top-0 z-50 px-3 pt-3">
-      <div className="pointer-events-auto relative mx-auto flex w-full max-w-[1200px] items-center justify-between gap-3 rounded-full border border-ink/10 bg-white/95 px-3.5 py-1.5 shadow-[0_8px_30px_-12px_rgba(10,16,48,0.2)] backdrop-blur-xl">
-        <Link href="/" className="shrink-0">
-          <img src="/logo.jpeg" alt="Viksit Vidyarthi" className="h-9 w-auto max-w-[168px] object-contain mix-blend-multiply" />
-        </Link>
-        <nav className={`${menu ? "absolute inset-x-0 top-[calc(100%+8px)] flex flex-col gap-1 rounded-3xl border border-ink/10 bg-white p-2.5 shadow-xl" : "hidden"} min-[1180px]:static min-[1180px]:flex min-[1180px]:flex-1 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:justify-center min-[1180px]:bg-transparent min-[1180px]:p-0 min-[1180px]:shadow-none`} aria-label="Main">
+    <header data-site-header className="pointer-events-none sticky top-0 z-50">
+      <div className="pointer-events-auto relative border-b border-ink/10 bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="shrink-0">
+            <img src="/logo.jpeg" alt="Viksit Vidyarthi" className="h-14 w-auto max-w-[200px] object-contain object-left mix-blend-multiply lg:h-[68px] lg:max-w-[250px]" />
+          </Link>
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-ink/10 bg-white p-1.5 shadow-[0_3px_16px_rgba(10,16,48,0.12)] lg:flex" aria-label="Main">
+            {links.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={`rounded-full px-4 py-2.5 text-sm whitespace-nowrap transition xl:px-5 ${active ? "bg-ink font-semibold text-white" : "font-medium text-mute hover:bg-ink/5 hover:text-ink"}`}>
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="flex items-center gap-1">
+            <button className={`${btnInk} ${headerBtn} hidden lg:inline-flex`} type="button" onClick={open}>
+              Start a Conversation
+            </button>
+            <button className="flex size-11 flex-col items-center justify-center gap-1 rounded-full border border-ink/10 bg-white shadow-sm lg:hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
+              <span className="block h-0.5 w-[18px] bg-ink" />
+              <span className="block h-0.5 w-[18px] bg-ink" />
+              <span className="block h-0.5 w-[18px] bg-ink" />
+            </button>
+          </div>
+        </div>
+        <nav className={`${menu ? "absolute inset-x-3 top-[calc(100%+8px)] flex flex-col gap-1 rounded-3xl border border-ink/10 bg-white p-2.5 shadow-xl" : "hidden"} lg:hidden`} aria-label="Mobile">
           {links.map((link) => {
             const active = pathname === link.href;
             return (
-              <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} onClick={() => setMenu(false)} className={`rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap min-[1180px]:px-3 ${active ? "bg-ink text-white" : "text-mute hover:bg-ink/5 hover:text-ink"}`}>
+              <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} onClick={() => setMenu(false)} className={`rounded-full px-4 py-3 text-sm font-medium ${active ? "bg-ink text-white" : "text-mute hover:bg-ink/5 hover:text-ink"}`}>
                 {link.label}
               </Link>
             );
           })}
-          <button className={`${btnInk} ${headerBtn} mt-1.5 w-full min-[1180px]:!hidden`} type="button" onClick={() => { setMenu(false); open(); }}>
+          <button className={`${btnInk} ${headerBtn} mt-1.5 w-full`} type="button" onClick={() => { setMenu(false); open(); }}>
             Start a Conversation
           </button>
         </nav>
-        <div className="flex items-center gap-2">
-          <button className={`${btnInk} ${headerBtn} max-[1179px]:!hidden`} type="button" onClick={open}>
-            Start a Conversation
-          </button>
-          <button className="flex size-11 flex-col items-center justify-center gap-1 rounded-full bg-ink/5 min-[1180px]:!hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
-            <span className="block h-0.5 w-[18px] bg-ink" />
-            <span className="block h-0.5 w-[18px] bg-ink" />
-            <span className="block h-0.5 w-[18px] bg-ink" />
-          </button>
-        </div>
       </div>
     </header>
   );
