@@ -117,9 +117,14 @@ app.post("/api/enquiry", async (req, res) => {
         `Where they would like to start: ${startWith}`,
       ].join("\n"),
     });
-  } catch {
+  } catch (error) {
+    const code = error && error.responseCode;
+    console.error("SMTP send failed", code || error?.code || "unknown");
+    const rejected = code === 535 || error?.code === "EAUTH";
     res.status(502).json({
-      detail: "Could not send the enquiry email. Check SMTP settings.",
+      detail: rejected
+        ? "Gmail rejected the mail login. In backend/.env set MAIL_SMTP_USER to that Gmail address and MAIL_SMTP_PASSWORD to a Gmail app password."
+        : "Could not send the enquiry email. Check SMTP settings.",
     });
     return;
   }

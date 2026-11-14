@@ -65,7 +65,7 @@ function EnquiryModal() {
         }),
       });
       const body = (await response.json().catch(() => ({}))) as { detail?: string };
-      if (!response.ok) throw new Error(body.detail || "Could not send enquiry.");
+      if (!response.ok) throw new Error(body.detail || "Could not send enquiry. The mail server did not accept it.");
       form.reset();
       setOk(true);
       setStatus("Enquiry sent. We will get in touch.");
