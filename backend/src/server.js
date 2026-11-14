@@ -34,6 +34,16 @@ function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function isPhone(value) {
+  const digits = String(value).replace(/\D/g, "");
+  const local = digits.length === 12 && digits.startsWith("91")
+    ? digits.slice(2)
+    : digits.length === 11 && digits.startsWith("0")
+      ? digits.slice(1)
+      : digits;
+  return /^[1-9]\d{9}$/.test(local);
+}
+
 const app = express();
 app.use(express.json());
 app.use(
@@ -72,8 +82,8 @@ app.post("/api/enquiry", async (req, res) => {
     res.status(400).json({ detail: "Please enter a valid email." });
     return;
   }
-  if (phone.length < 7 || phone.length > 20) {
-    res.status(400).json({ detail: "Please enter a valid phone number." });
+  if (!isPhone(phone)) {
+    res.status(400).json({ detail: "Enter a valid 10-digit phone number, with or without +91." });
     return;
   }
   if (!INSTITUTION_TYPES.has(institutionType)) {

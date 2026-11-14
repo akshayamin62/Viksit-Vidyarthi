@@ -39,6 +39,17 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
   );
 }
 
+function localPhoneDigits(value: string) {
+  const digits = value.replace(/\D/g, "");
+  if (digits.length === 12 && digits.startsWith("91")) return digits.slice(2);
+  if (digits.length === 11 && digits.startsWith("0")) return digits.slice(1);
+  return digits;
+}
+
+function isIndianPhone(value: string) {
+  return /^[1-9]\d{9}$/.test(localPhoneDigits(value));
+}
+
 function EnquiryModal() {
   const { close } = useEnquiry();
   const [status, setStatus] = useState("");
@@ -48,6 +59,20 @@ function EnquiryModal() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    const phone = form.elements.namedItem("phone");
+    if (phone instanceof HTMLInputElement) {
+      phone.setCustomValidity(isIndianPhone(phone.value) ? "" : "Enter a valid 10-digit phone number, with or without +91.");
+      if (!phone.checkValidity()) {
+        phone.reportValidity();
+        setOk(false);
+        setStatus("Enter a valid 10-digit phone number.");
+        return;
+      }
+    }
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     setOk(false);
     setStatus("Sending enquiry…");
     try {
@@ -91,12 +116,12 @@ function EnquiryModal() {
         </p>
         <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
           <input className="absolute -left-[9999px]" name="website" tabIndex={-1} autoComplete="off" />
-          <Field label="Your name" name="name" autoComplete="name" />
-          <Field label="Institution" name="institution" autoComplete="organization" />
+          <Field label="Your name" name="name" autoComplete="name" minLength={2} />
+          <Field label="Institution" name="institution" autoComplete="organization" minLength={2} />
           <Field label="Email" name="email" type="email" autoComplete="email" />
-          <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
+          <Field label="Phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" minLength={10} maxLength={16} placeholder="9876543210" onInput={(event) => event.currentTarget.setCustomValidity("")} />
           <label className="block sm:col-span-2">
-            <span className="mb-1.5 block text-sm font-semibold text-ink">Institution type</span>
+            <span className="mb-1.5 block text-sm font-semibold text-ink">Institution type <span className="text-[#c0281c]">*</span></span>
             <Select name="institution_type">
               <option value="">Select</option>
               <option value="school">School</option>
@@ -105,7 +130,7 @@ function EnquiryModal() {
             </Select>
           </label>
           <label className="block sm:col-span-2">
-            <span className="mb-1.5 block text-sm font-semibold text-ink">Where would you like to start?</span>
+            <span className="mb-1.5 block text-sm font-semibold text-ink">Where would you like to start? <span className="text-[#c0281c]">*</span></span>
             <Select name="start_with">
               <option value="">Select</option>
               <option value="student programmes">Student programmes</option>
@@ -126,11 +151,11 @@ function EnquiryModal() {
   );
 }
 
-function Field({ label, name, type = "text", autoComplete }: { label: string; name: string; type?: string; autoComplete?: string }) {
+function Field({ label, name, type = "text", autoComplete, minLength, maxLength, placeholder, inputMode, onInput }: { label: string; name: string; type?: string; autoComplete?: string; minLength?: number; maxLength?: number; placeholder?: string; inputMode?: "tel" | "email" | "text"; onInput?: (event: FormEvent<HTMLInputElement>) => void }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-semibold text-ink">{label}</span>
-      <input className="h-[50px] w-full rounded-xl bg-paper px-4 shadow-[inset_0_0_0_1px_rgba(10,16,48,0.1)] outline-none focus:bg-white focus:shadow-[inset_0_0_0_2px_#2742e0]" name={name} type={type} required autoComplete={autoComplete} />
+      <span className="mb-1.5 block text-sm font-semibold text-ink">{label} <span className="text-[#c0281c]">*</span></span>
+      <input className="h-[50px] w-full rounded-xl bg-paper px-4 shadow-[inset_0_0_0_1px_rgba(10,16,48,0.1)] outline-none focus:bg-white focus:shadow-[inset_0_0_0_2px_#2742e0]" name={name} type={type} required autoComplete={autoComplete} minLength={minLength} maxLength={maxLength} placeholder={placeholder} inputMode={inputMode} onInput={onInput} />
     </label>
   );
 }
