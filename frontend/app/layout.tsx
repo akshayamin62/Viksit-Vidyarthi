@@ -17,6 +17,10 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Viksit Vidyarthi – Viksit Bharat",
   description: "A structured ecosystem for student development, teacher empowerment and parent engagement.",
+  icons: {
+    icon: "/Thumbnail.png",
+    apple: "/Thumbnail.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

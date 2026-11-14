@@ -49,7 +49,7 @@ function Header() {
       <div className="pointer-events-auto relative border-b border-ink/10 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link href="/" className="shrink-0">
-            <img src="/logo.jpeg" alt="Viksit Vidyarthi" className="h-14 w-auto max-w-[200px] object-contain object-left mix-blend-multiply lg:h-[68px] lg:max-w-[250px]" />
+            <img src="/logo.png" alt="Viksit Vidyarthi" className="h-14 w-auto max-w-[220px] object-contain object-left lg:h-[72px] lg:max-w-[280px]" />
           </Link>
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-ink/10 bg-white p-1.5 shadow-[0_3px_16px_rgba(10,16,48,0.12)] lg:flex" aria-label="Main">
             {links.map((link) => {
@@ -95,8 +95,8 @@ function Footer() {
     <footer className="mt-3 rounded-t-[32px] bg-ink px-6 py-16 text-[#c9d0ee]">
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-9 flex flex-wrap items-center justify-between gap-6 border-b border-white/10 pb-9">
-          <Link href="/" className="rounded-[14px] bg-white px-3 py-2">
-            <img src="/logo.jpeg" alt="Viksit Vidyarthi" className="h-10 w-auto max-w-[200px] object-contain" />
+          <Link href="/" className="shrink-0">
+            <img src="/footer-logo.png" alt="ADMITra" className="h-14 w-auto max-w-[220px] object-contain" />
           </Link>
           <nav className="flex flex-wrap gap-x-7 gap-y-2" aria-label="Footer">
             {links.map((link) => (
