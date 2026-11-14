@@ -13,7 +13,7 @@ export default function HomePage() {
   const { open } = useEnquiry();
   return (
     <main>
-      <section className={`${hero} mx-3 mt-3 flex min-h-[calc(100svh-6.75rem)] items-center px-6 py-6`}>
+      <section className={`${hero} mx-3 mt-3 flex items-center px-4 py-8 sm:px-6 sm:py-6 lg:min-h-[calc(100svh-6.75rem)]`}>
         <div className="mx-auto grid w-full max-w-[1200px] items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <h1 className="font-display text-[clamp(2.15rem,4.4vw,3.7rem)] leading-[1.02] font-semibold tracking-tight">
@@ -23,7 +23,7 @@ export default function HomePage() {
             <p className="mt-4 max-w-xl text-lg text-white/80">
               A proposal to set up a structured ecosystem for student development, teacher empowerment and parent engagement, built for an employable career.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link className={btnSaffron} href="/viksit-vidyarthi">
                 Explore the programme <Arrow />
               </Link>
@@ -46,7 +46,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-24">
+      <section className="mx-auto w-full max-w-[1200px] px-4 py-16 sm:px-6 sm:py-24">
         <SectionHead
           title={
             <>
@@ -63,7 +63,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1200px] px-6 pb-24">
+      <section className="mx-auto w-full max-w-[1200px] px-4 pb-16 sm:px-6 sm:pb-24">
         <SectionHead
           title={
             <>
@@ -94,7 +94,7 @@ export default function HomePage() {
       </section>
 
       <section className="px-3 pb-3">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[32px] bg-ink px-8 py-14 text-white [background:radial-gradient(50%_120%_at_0%_0%,rgba(255,138,31,.5),transparent_60%),radial-gradient(50%_120%_at_100%_100%,rgba(15,157,88,.5),transparent_60%),#0a1030] md:px-14">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[28px] bg-ink px-5 py-10 text-white [background:radial-gradient(50%_120%_at_0%_0%,rgba(255,138,31,.5),transparent_60%),radial-gradient(50%_120%_at_100%_100%,rgba(15,157,88,.5),transparent_60%),#0a1030] sm:rounded-[32px] sm:px-8 sm:py-14 md:px-14">
           <div>
             <h2 className="max-w-xl font-display text-[clamp(1.7rem,3.2vw,2.6rem)] leading-tight font-semibold tracking-tight">Ready to build a student-development ecosystem in your institution?</h2>
             <p className="mt-3 max-w-xl text-white/80">Start with student programmes, teacher workshops, parent programmes or a Centre of Excellence. Tell us about your institution and we will get in touch.</p>

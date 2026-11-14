@@ -118,7 +118,7 @@ export default function ViksitPage() {
 
   return (
     <main>
-      <section className={`${hero} mx-3 mt-3 px-6 py-16`}>
+      <section className={`${hero} mx-3 mt-3 px-4 py-12 sm:px-6 sm:py-16`}>
         <div className="mx-auto w-full max-w-[1200px]">
           <h1 className="max-w-4xl font-display text-[clamp(2.3rem,5vw,4rem)] leading-tight font-semibold tracking-tight">Viksit Vidyarthi for Viksit Bharat</h1>
           <p className="mt-4 max-w-3xl text-lg text-white/80">A comprehensive educational development initiative that prepares students, empowers teachers, engages parents and strengthens institutions to contribute to the national vision of Viksit Bharat 2047.</p>
@@ -143,7 +143,7 @@ export default function ViksitPage() {
           }
           text="A flexible, institution-integrated programme. The goal is not another extracurricular activity, but a measurable, sustainable support system inside the educational environment."
         />
-        <div className="inline-flex flex-wrap gap-1 rounded-full bg-ink/10 p-1" role="tablist">
+        <div className="flex max-w-full flex-wrap gap-1 rounded-full bg-ink/10 p-1" role="tablist">
           {([
             ["student", "Student development", "bg-saffron text-[#1f1000]", "bg-[#fff1e0] text-[#9a4e00]"],
             ["teacher", "Teacher empowerment", "bg-white text-ink shadow", "bg-white/70 text-ink/70"],
@@ -201,7 +201,7 @@ export default function ViksitPage() {
           Features, advantages
           <span className="block">and benefits</span>
         </h2>
-        <div className="mt-6 inline-flex gap-1 rounded-full bg-ink/10 p-1">
+        <div className="mt-6 inline-flex max-w-full flex-wrap gap-1 rounded-full bg-ink/10 p-1">
           <button className={`rounded-full px-5 py-3 font-semibold ${audience === "students" ? "bg-white shadow" : "text-mute"}`} type="button" onClick={() => setAudience("students")}>For students</button>
           <button className={`rounded-full px-5 py-3 font-semibold ${audience === "institution" ? "bg-white shadow" : "text-mute"}`} type="button" onClick={() => setAudience("institution")}>For your institution</button>
         </div>
@@ -214,7 +214,10 @@ export default function ViksitPage() {
           {rows.map((row) => (
             <div key={row[0]} className="grid gap-2 md:grid-cols-3">
               {row.map((cell, index) => (
-                <span key={cell} className={`rounded-xl px-5 py-4 ${index === 0 ? "bg-[#fff1e0] font-display font-bold text-[#1f1000]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>{cell}</span>
+                <span key={cell} className={`rounded-xl px-5 py-4 ${index === 0 ? "bg-[#fff1e0] font-display font-bold text-[#1f1000]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>
+                  <span className="mb-1 block text-xs font-semibold tracking-wide uppercase md:hidden">{["Feature", "Advantage", "Benefit"][index]}</span>
+                  {cell}
+                </span>
               ))}
             </div>
           ))}
@@ -235,8 +238,8 @@ export default function ViksitPage() {
           <div className="grid gap-2.5">
             {stages.map(([title], index) => (
               <button key={title} className={`flex items-center gap-4 rounded-[20px] px-4 py-4 text-left font-semibold ${stage === index ? "bg-ink text-white" : "bg-white shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`} type="button" onClick={() => setStage(index)}>
-                <span className={`grid size-10 place-items-center rounded-xl font-display ${stage === index ? "bg-saffron text-[#1f1000]" : "bg-paper"}`}>{index + 1}</span>
-                {title}
+                <span className={`grid size-10 shrink-0 place-items-center rounded-xl font-display ${stage === index ? "bg-saffron text-[#1f1000]" : "bg-paper"}`}>{index + 1}</span>
+                <span className="min-w-0">{title}</span>
               </button>
             ))}
           </div>
@@ -298,9 +301,9 @@ export default function ViksitPage() {
       </section>
 
       <section className="px-3 pb-3">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[32px] bg-ink px-8 py-14 text-white md:px-14">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[28px] bg-ink px-5 py-10 text-white sm:rounded-[32px] sm:px-8 sm:py-14 md:px-14">
           <div>
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Bring this to your institution.</h2>
+            <h2 className="font-display text-[clamp(1.8rem,4vw,2.25rem)] font-semibold tracking-tight">Bring this to your institution.</h2>
             <p className="mt-3 text-white/80">Tell us about your school or college and we will get in touch.</p>
           </div>
           <button className={btnSaffron} type="button" onClick={open}>Start a Conversation</button>

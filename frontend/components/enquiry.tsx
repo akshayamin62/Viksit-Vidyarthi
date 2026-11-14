@@ -101,14 +101,14 @@ function EnquiryModal() {
   }
 
   return (
-    <div className="fixed inset-0 z-[80] grid place-items-center p-4" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
+    <div className="fixed inset-0 z-[80] grid place-items-end p-3 sm:place-items-center sm:p-4" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
       <button className="absolute inset-0 bg-ink/60 backdrop-blur-sm" aria-label="Close" onClick={close} />
-      <div className="relative max-h-[92vh] w-full max-w-[620px] overflow-auto rounded-[32px] bg-white p-9 shadow-[0_30px_60px_-20px_rgba(10,16,48,0.28)]">
+      <div className="relative max-h-[92dvh] w-full max-w-[620px] overflow-auto rounded-[28px] bg-white p-5 shadow-[0_30px_60px_-20px_rgba(10,16,48,0.28)] sm:rounded-[32px] sm:p-9">
         <div className="absolute inset-x-0 top-0 h-1.5 bg-[linear-gradient(90deg,#ff8a1f_33%,#fff_33%_66%,#0f9d58_66%)]" />
         <button className="absolute top-5 right-4 grid size-10 place-items-center rounded-full bg-paper text-2xl leading-none hover:bg-ink hover:text-white" type="button" onClick={close} aria-label="Close">
           ×
         </button>
-        <h2 id="enquiry-title" className="mt-1.5 mr-10 font-display text-3xl font-semibold tracking-tight text-ink">
+        <h2 id="enquiry-title" className="mt-1.5 mr-10 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
           Begin an institutional conversation
         </h2>
         <p className="mt-2 text-mute">

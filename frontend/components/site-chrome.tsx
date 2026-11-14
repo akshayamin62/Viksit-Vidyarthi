@@ -48,8 +48,8 @@ function Header() {
     <header data-site-header className="pointer-events-none sticky top-0 z-50">
       <div className="pointer-events-auto relative border-b border-ink/10 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="shrink-0">
-            <img src="/logo.png" alt="Viksit Vidyarthi" className="h-14 w-auto max-w-[220px] object-contain object-left lg:h-[72px] lg:max-w-[280px]" />
+          <Link href="/" className="min-w-0 shrink">
+            <img src="/logo.png" alt="Viksit Vidyarthi" className="h-12 w-auto max-w-[168px] object-contain object-left sm:h-14 sm:max-w-[220px] lg:h-[72px] lg:max-w-[280px]" />
           </Link>
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-ink/10 bg-white p-1.5 shadow-[0_3px_16px_rgba(10,16,48,0.12)] lg:flex" aria-label="Main">
             {links.map((link) => {
@@ -62,10 +62,10 @@ function Header() {
             })}
           </nav>
           <div className="flex items-center gap-1">
-            <button className={`${btnInk} ${headerBtn} hidden lg:inline-flex`} type="button" onClick={open}>
+            <button className={`${btnInk} ${headerBtn} !hidden lg:!inline-flex`} type="button" onClick={open}>
               Start a Conversation
             </button>
-            <button className="flex size-11 flex-col items-center justify-center gap-1 rounded-full border border-ink/10 bg-white shadow-sm lg:hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
+            <button className="flex size-11 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-ink/10 bg-white shadow-sm lg:hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
               <span className="block h-0.5 w-[18px] bg-ink" />
               <span className="block h-0.5 w-[18px] bg-ink" />
               <span className="block h-0.5 w-[18px] bg-ink" />
@@ -92,7 +92,7 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="mt-3 rounded-t-[32px] bg-ink px-6 py-16 text-[#c9d0ee]">
+    <footer className="mt-3 rounded-t-[32px] bg-ink px-4 py-12 text-[#c9d0ee] sm:px-6 sm:py-16">
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-9 flex flex-wrap items-center justify-between gap-6 border-b border-white/10 pb-9">
           <Link href="/" className="shrink-0">

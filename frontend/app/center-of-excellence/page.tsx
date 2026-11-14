@@ -65,7 +65,7 @@ export default function CentrePage() {
 
   return (
     <main>
-      <section className={`${hero} mx-3 mt-3 px-6 py-16`}>
+      <section className={`${hero} mx-3 mt-3 px-4 py-12 sm:px-6 sm:py-16`}>
         <div className="mx-auto w-full max-w-[1200px]">
           <h1 className="font-display text-[clamp(2.3rem,5vw,4rem)] font-semibold tracking-tight">Center of Excellence</h1>
           <p className="mt-4 max-w-3xl text-lg text-white/80">A structured, long-term ecosystem for student development, education planning and career readiness within the institution. Select an item to see more.</p>
@@ -89,7 +89,7 @@ export default function CentrePage() {
         </div>
         {active !== null ? (
           <div className="mt-5 flex flex-wrap items-center justify-between gap-6 rounded-[32px] bg-ink p-8 text-white md:p-10">
-            <div className="flex items-start gap-5">
+            <div className="flex min-w-0 items-start gap-4 sm:gap-5">
               <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-saffron text-[#1f1000]">
                 <Ico className="size-7">{items[active].icon}</Ico>
               </span>
@@ -105,9 +105,9 @@ export default function CentrePage() {
       </section>
 
       <section className="px-3 pb-3">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[32px] bg-ink px-8 py-14 text-white md:px-14">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-8 rounded-[28px] bg-ink px-5 py-10 text-white sm:rounded-[32px] sm:px-8 sm:py-14 md:px-14">
           <div>
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Explore a Centre of Excellence for your institution.</h2>
+            <h2 className="max-w-xl font-display text-[clamp(1.8rem,4vw,2.25rem)] font-semibold tracking-tight">Explore a Centre of Excellence for your institution.</h2>
             <p className="mt-3 text-white/80">Scope and arrangements are defined together, through institutional collaboration.</p>
           </div>
           <button className={btnSaffron} type="button" onClick={open}>Start a Conversation</button>
