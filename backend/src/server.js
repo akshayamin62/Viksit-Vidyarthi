@@ -142,7 +142,7 @@ app.post("/api/enquiry", async (req, res) => {
   res.json({ ok: true });
 });
 
-const port = Number(process.env.PORT || 4000);
+const port = Number(process.env.PORT || 5016);
 app.listen(port, () => {
   console.log(`Enquiry API running on http://127.0.0.1:${port}`);
 });
