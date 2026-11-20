@@ -47,9 +47,13 @@ function Header() {
   return (
     <header data-site-header className="pointer-events-none sticky top-0 z-50">
       <div className="pointer-events-auto relative border-b border-ink/10 bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="min-w-0 shrink">
-            <img src="/logo.png" alt="Viksit Vidyarthi" className="h-12 w-auto max-w-[168px] object-contain object-left sm:h-14 sm:max-w-[220px] lg:h-[72px] lg:max-w-[280px]" />
+        <div className="mx-auto flex min-h-[5.25rem] max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:min-h-[6.5rem] lg:px-8">
+          <Link href="/" className="min-w-0 max-w-[58%] shrink sm:max-w-none">
+            <img
+              src="/logo.png"
+              alt="Viksit Vidyarthi"
+              className="h-[clamp(3.25rem,4.8vw+1.25rem,5.25rem)] w-auto max-w-[min(100%,20rem)] object-contain object-left lg:max-w-[22.5rem]"
+            />
           </Link>
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-ink/10 bg-white p-1.5 shadow-[0_3px_16px_rgba(10,16,48,0.12)] lg:flex" aria-label="Main">
             {links.map((link) => {
@@ -65,7 +69,7 @@ function Header() {
             <button className={`${btnInk} ${headerBtn} !hidden lg:!inline-flex`} type="button" onClick={open}>
               Start a Conversation
             </button>
-            <button className="flex size-11 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-ink/10 bg-white shadow-sm lg:hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
+            <button className="flex size-11 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-ink/10 bg-white shadow-sm transition duration-200 hover:border-ink/20 hover:bg-paper hover:shadow-md active:scale-95 lg:hidden" type="button" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={() => setMenu((value) => !value)}>
               <span className="block h-0.5 w-[18px] bg-ink" />
               <span className="block h-0.5 w-[18px] bg-ink" />
               <span className="block h-0.5 w-[18px] bg-ink" />

@@ -54,6 +54,10 @@ function EnquiryModal() {
   const { close } = useEnquiry();
   const [status, setStatus] = useState("");
   const [ok, setOk] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const thankYouMessage =
+    "Thank you for your enquiry. The Viksit Vidyarthi brochure has been sent to your email address. Our team will be in touch with you shortly.";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -65,6 +69,7 @@ function EnquiryModal() {
       if (!phone.checkValidity()) {
         phone.reportValidity();
         setOk(false);
+        setSent(false);
         setStatus("Enter a valid 10-digit phone number.");
         return;
       }
@@ -73,36 +78,44 @@ function EnquiryModal() {
       form.reportValidity();
       return;
     }
-    setOk(false);
-    setStatus("Sending enquiry…");
+
+    const payload = {
+      name: String(data.get("name") || "").trim(),
+      institution: String(data.get("institution") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      institution_type: data.get("institution_type"),
+      start_with: data.get("start_with"),
+      website: data.get("website") || "",
+    };
+
+    form.reset();
+    setSent(true);
+    setOk(true);
+    setStatus(thankYouMessage);
+
     try {
       const response = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: String(data.get("name") || "").trim(),
-          institution: String(data.get("institution") || "").trim(),
-          email: String(data.get("email") || "").trim(),
-          phone: String(data.get("phone") || "").trim(),
-          institution_type: data.get("institution_type"),
-          start_with: data.get("start_with"),
-          website: data.get("website") || "",
-        }),
+        body: JSON.stringify(payload),
       });
-      const body = (await response.json().catch(() => ({}))) as { detail?: string };
-      if (!response.ok) throw new Error(body.detail || "Could not send enquiry. The mail server did not accept it.");
-      form.reset();
-      setOk(true);
-      setStatus("Enquiry sent. We will get in touch.");
-    } catch (error) {
+      const body = (await response.json().catch(() => ({}))) as { detail?: string; ok?: boolean };
+      if (!response.ok || !body.ok) {
+        setSent(false);
+        setOk(false);
+        setStatus(body.detail || "We could not deliver your enquiry. Please try again or email hello@admitra.io.");
+      }
+    } catch {
+      setSent(false);
       setOk(false);
-      setStatus(error instanceof Error ? error.message : "Could not send enquiry.");
+      setStatus("We could not reach the server. Please try again or email hello@admitra.io.");
     }
   }
 
   return (
     <div className="fixed inset-0 z-[80] grid place-items-end p-3 sm:place-items-center sm:p-4" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
-      <button className="absolute inset-0 bg-ink/60 backdrop-blur-sm" aria-label="Close" onClick={close} />
+      <button className="absolute inset-0 bg-ink/60 backdrop-blur-sm transition hover:bg-ink/70" aria-label="Close" onClick={close} />
       <div className="relative max-h-[92dvh] w-full max-w-[620px] overflow-auto rounded-[28px] bg-white p-5 shadow-[0_30px_60px_-20px_rgba(10,16,48,0.28)] sm:rounded-[32px] sm:p-9">
         <div className="absolute inset-x-0 top-0 h-1.5 bg-[linear-gradient(90deg,#ff8a1f_33%,#fff_33%_66%,#0f9d58_66%)]" />
         <button className="absolute top-5 right-4 grid size-10 place-items-center rounded-full bg-paper text-2xl leading-none hover:bg-ink hover:text-white" type="button" onClick={close} aria-label="Close">
@@ -112,40 +125,54 @@ function EnquiryModal() {
           Begin an institutional conversation
         </h2>
         <p className="mt-2 text-mute">
-          Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd. Tell us about your institution and we will get in touch.
+          Schools, colleges and educational leaders are invited to collaborate with ADMITra CORE Systems Pvt. Ltd.
         </p>
-        <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
-          <input className="absolute -left-[9999px]" name="website" tabIndex={-1} autoComplete="off" />
-          <Field label="Your name" name="name" autoComplete="name" minLength={2} />
-          <Field label="Institution" name="institution" autoComplete="organization" minLength={2} />
-          <Field label="Email" name="email" type="email" autoComplete="email" />
-          <Field label="Phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" minLength={10} maxLength={16} placeholder="9876543210" onInput={(event) => event.currentTarget.setCustomValidity("")} />
-          <label className="block sm:col-span-2">
-            <span className="mb-1.5 block text-sm font-semibold text-ink">Institution type <span className="text-[#c0281c]">*</span></span>
-            <Select name="institution_type">
-              <option value="">Select</option>
-              <option value="school">School</option>
-              <option value="college">College</option>
-              <option value="other">Other educational institution</option>
-            </Select>
-          </label>
-          <label className="block sm:col-span-2">
-            <span className="mb-1.5 block text-sm font-semibold text-ink">Where would you like to start? <span className="text-[#c0281c]">*</span></span>
-            <Select name="start_with">
-              <option value="">Select</option>
-              <option value="student programmes">Student programmes</option>
-              <option value="teacher workshops">Teacher workshops</option>
-              <option value="parent programmes">Parent programmes</option>
-              <option value="center of excellence">Centre of Excellence</option>
-            </Select>
-          </label>
-          <button className={`${btnSaffron} sm:col-span-2`} type="submit">
-            Send enquiry
-          </button>
-          <p className={`min-h-5 text-sm font-semibold sm:col-span-2 ${ok ? "text-[#0a6e3d]" : "text-[#c0281c]"}`} role="status">
-            {status}
-          </p>
-        </form>
+        {sent ? (
+          <div className="mt-8 rounded-[24px] bg-[#e2f5ea] px-6 py-8 text-center sm:px-10 sm:py-10">
+            <p className="font-display text-2xl font-semibold text-[#0a6e3d] sm:text-3xl">Thank you</p>
+            <p className="mt-4 text-base leading-relaxed text-ink sm:text-lg" role="status">
+              {thankYouMessage}
+            </p>
+            <button className={`${btnSaffron} mt-8`} type="button" onClick={close}>
+              Close
+            </button>
+          </div>
+        ) : (
+          <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
+            <input className="absolute -left-[9999px]" name="website" tabIndex={-1} autoComplete="off" />
+            <Field label="Your name" name="name" autoComplete="name" minLength={2} />
+            <Field label="Institution" name="institution" autoComplete="organization" minLength={2} />
+            <Field label="Email" name="email" type="email" autoComplete="email" />
+            <Field label="Phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" minLength={10} maxLength={16} placeholder="9876543210" onInput={(event) => event.currentTarget.setCustomValidity("")} />
+            <label className="block sm:col-span-2">
+              <span className="mb-1.5 block text-sm font-semibold text-ink">Institution type <span className="text-[#c0281c]">*</span></span>
+              <Select name="institution_type">
+                <option value="">Select</option>
+                <option value="school">School</option>
+                <option value="college">College</option>
+                <option value="other">Other educational institution</option>
+              </Select>
+            </label>
+            <label className="block sm:col-span-2">
+              <span className="mb-1.5 block text-sm font-semibold text-ink">Where would you like to start? <span className="text-[#c0281c]">*</span></span>
+              <Select name="start_with">
+                <option value="">Select</option>
+                <option value="student programmes">Student programmes</option>
+                <option value="teacher workshops">Teacher workshops</option>
+                <option value="parent programmes">Parent programmes</option>
+                <option value="center of excellence">Centre of Excellence</option>
+              </Select>
+            </label>
+            <button className={`${btnSaffron} sm:col-span-2`} type="submit">
+              Send enquiry
+            </button>
+            {status ? (
+              <p className={`min-h-5 text-sm font-semibold sm:col-span-2 ${ok ? "text-[#0a6e3d]" : "text-[#c0281c]"}`} role="status">
+                {status}
+              </p>
+            ) : null}
+          </form>
+        )}
       </div>
     </div>
   );

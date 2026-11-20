@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { useEnquiry } from "@/components/enquiry";
 import { Check } from "@/components/icons";
 import { SectionHead } from "@/components/section-head";
-import { btnSaffron } from "@/lib/ui";
+import { btnSaffron, btnWhite } from "@/lib/ui";
 
 const hero =
   "relative isolate overflow-hidden rounded-[32px] text-white [background:radial-gradient(60%_80%_at_8%_0%,rgba(255,138,31,.42),transparent_60%),radial-gradient(55%_70%_at_100%_100%,rgba(15,157,88,.42),transparent_60%),radial-gradient(40%_50%_at_70%_10%,rgba(39,66,224,.35),transparent_70%),#0a1030]";
+
+const tabButton =
+  "cursor-pointer rounded-full px-5 py-3 font-semibold transition duration-200 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]";
 
 const pillars = {
   student: {
@@ -149,17 +152,36 @@ export default function ViksitPage() {
             ["teacher", "Teacher empowerment", "bg-white text-ink shadow", "bg-white/70 text-ink/70"],
             ["parent", "Parent engagement", "bg-green text-white", "bg-[#e2f5ea] text-[#0a6e3d]"],
           ] as const).map(([key, label, active, idle]) => (
-            <button key={key} className={`rounded-full px-5 py-3 font-semibold ${pillar === key ? active : idle}`} type="button" aria-selected={pillar === key} onClick={() => setPillar(key)}>
+            <button
+              key={key}
+              className={`${tabButton} ${pillar === key ? `${active} hover:brightness-[0.97]` : `${idle} hover:ring-1 hover:ring-ink/15`}`}
+              type="button"
+              aria-selected={pillar === key}
+              onClick={() => setPillar(key)}
+            >
               {label}
             </button>
           ))}
         </div>
-        <p className="mt-6 max-w-3xl font-display text-2xl font-semibold text-ink"><span className="text-mute">Objective: </span>{current.objective}</p>
+        <p className="mt-6 max-w-[min(100%,72rem)] font-display text-[clamp(0.95rem,1.05vw+0.55rem,1.35rem)] font-semibold leading-snug text-ink md:text-nowrap">
+          <span className="text-mute">Objective: </span>
+          {current.objective}
+        </p>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {current.items.map(([title, text]) => (
-            <article key={title} className="rounded-[20px] bg-white p-7 shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]">
-              <h3 className="font-display text-xl font-bold text-ink">{title}</h3>
-              <p className="mt-2 text-mute">{text}</p>
+          {current.items.map(([title, text], index) => (
+            <article
+              key={title}
+              className={`rounded-[20px] p-7 shadow-[inset_0_0_0_1px_rgba(10,16,48,.08)] ${
+                [
+                  "bg-[#fff1e0] text-[#1f1000] shadow-[inset_4px_0_0_#ff8a1f]",
+                  "bg-white text-ink shadow-[inset_4px_0_0_rgba(10,16,48,.35)]",
+                  "bg-[#e2f5ea] text-[#0a4a2a]",
+                  "bg-[#e8eeff] text-ink shadow-[inset_4px_0_0_#2742e0]",
+                ][index]
+              }`}
+            >
+              <h3 className="font-display text-xl font-bold">{title}</h3>
+              <p className={`mt-2 ${index === 0 ? "text-[#4a3018]" : index === 2 ? "text-[#0a6e3d]" : "text-mute"}`}>{text}</p>
             </article>
           ))}
         </div>
@@ -178,18 +200,26 @@ export default function ViksitPage() {
         />
         <div className="flex flex-wrap gap-2">
           {["all", "Student & parent", "Educator"].map((value) => (
-            <button key={value} className={`rounded-full px-5 py-2.5 font-semibold ${filter === value ? "bg-ink text-white" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`} type="button" onClick={() => setFilter(value)}>
+            <button
+              key={value}
+              className={`${tabButton} py-2.5 ${filter === value ? "bg-ink text-white hover:bg-ink-2" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)] hover:bg-ink/5 hover:text-ink"}`}
+              type="button"
+              onClick={() => setFilter(value)}
+            >
               {value === "all" ? "All" : value}
             </button>
           ))}
         </div>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
           {challenges.filter((item) => filter === "all" || item[0] === filter).map(([tag, title, body, shift]) => (
-            <article key={title} className="rounded-[20px] bg-white p-7 shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]">
-              <span className={`rounded-full px-3 py-1 text-xs font-semibold ${tag === "Educator" ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-[#fff1e0] text-[#d96a00]"}`}>{tag}</span>
-              <h3 className="mt-4 font-display text-xl font-bold text-ink">{title}</h3>
-              <p className="mt-2 text-mute">{body}</p>
-              <p className="mt-4 border-t border-dashed border-ink/10 pt-4 text-ink"><b className={tag === "Educator" ? "text-[#0a6e3d]" : "text-[#d96a00]"}>The shift: </b>{shift}</p>
+            <article key={title} className="flex h-full flex-col rounded-[20px] bg-white p-7 shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]">
+              <span className={`w-fit rounded-full px-3 py-1 text-xs font-semibold ${tag === "Educator" ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-[#fff1e0] text-[#d96a00]"}`}>{tag}</span>
+              <h3 className="mt-4 font-display text-xl leading-snug font-bold text-ink">{title}</h3>
+              <p className="mt-2 flex-1 text-base leading-snug text-mute">{body}</p>
+              <p className="mt-4 border-t border-dashed border-ink/10 pt-3 text-base leading-snug text-ink">
+                <b className={tag === "Educator" ? "text-[#0a6e3d]" : "text-[#d96a00]"}>The shift: </b>
+                {shift}
+              </p>
             </article>
           ))}
         </div>
@@ -202,8 +232,12 @@ export default function ViksitPage() {
           <span className="block">and benefits</span>
         </h2>
         <div className="mt-6 inline-flex max-w-full flex-wrap gap-1 rounded-full bg-ink/10 p-1">
-          <button className={`rounded-full px-5 py-3 font-semibold ${audience === "students" ? "bg-white shadow" : "text-mute"}`} type="button" onClick={() => setAudience("students")}>For students</button>
-          <button className={`rounded-full px-5 py-3 font-semibold ${audience === "institution" ? "bg-white shadow" : "text-mute"}`} type="button" onClick={() => setAudience("institution")}>For your institution</button>
+          <button className={`${tabButton} ${audience === "students" ? "bg-white text-ink shadow hover:shadow-lg" : "text-mute hover:bg-white/80 hover:text-ink"}`} type="button" onClick={() => setAudience("students")}>
+            For students
+          </button>
+          <button className={`${tabButton} ${audience === "institution" ? "bg-white text-ink shadow hover:shadow-lg" : "text-mute hover:bg-white/80 hover:text-ink"}`} type="button" onClick={() => setAudience("institution")}>
+            For your institution
+          </button>
         </div>
         <div className="mt-5 hidden grid-cols-3 gap-2 md:grid">
           {["Features", "Advantages", "Benefits"].map((label, index) => (
@@ -237,7 +271,7 @@ export default function ViksitPage() {
         <div className="grid items-start gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="grid gap-2.5">
             {stages.map(([title], index) => (
-              <button key={title} className={`flex items-center gap-4 rounded-[20px] px-4 py-4 text-left font-semibold ${stage === index ? "bg-ink text-white" : "bg-white shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`} type="button" onClick={() => setStage(index)}>
+              <button key={title} className={`${tabButton} flex w-full items-center gap-4 rounded-[20px] px-4 py-4 text-left font-semibold ${stage === index ? "bg-ink text-white hover:bg-ink-2" : "bg-white shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)] hover:bg-paper"}`} type="button" onClick={() => setStage(index)}>
                 <span className={`grid size-10 shrink-0 place-items-center rounded-xl font-display ${stage === index ? "bg-saffron text-[#1f1000]" : "bg-paper"}`}>{index + 1}</span>
                 <span className="min-w-0">{title}</span>
               </button>
@@ -249,7 +283,7 @@ export default function ViksitPage() {
             <p className="mt-4 max-w-xl text-lg text-white/85">{stages[stage][1]}</p>
             <div className="mt-auto pt-8">
               {stage < 5 ? (
-                <button className="inline-flex min-h-[50px] items-center rounded-full bg-white px-6 font-semibold text-ink" type="button" onClick={() => setStage(stage + 1)}>Next stage</button>
+                <button className={btnWhite} type="button" onClick={() => setStage(stage + 1)}>Next stage</button>
               ) : (
                 <button className={btnSaffron} type="button" onClick={open}>Discuss your institution</button>
               )}

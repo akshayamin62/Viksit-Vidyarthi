@@ -14,13 +14,23 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: clamp(6.5rem, 8vw, 7.5rem);
 }
 
 body {
   background: var(--color-paper);
   color: #1a2040;
   overflow-x: clip;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+  transition-duration: 200ms;
+  transition-property: transform, box-shadow, background-color, color, filter, border-color;
+}
+
+button:not(:disabled):hover {
+  filter: brightness(1.02);
 }
 
 @media (prefers-reduced-motion: reduce) {

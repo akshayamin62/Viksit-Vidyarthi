@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { useEnquiry } from "@/components/enquiry";
 import { Arrow, Ico } from "@/components/icons";
@@ -56,10 +57,20 @@ export default function HomePage() {
           }
           text="Built to sit alongside your curriculum, not replace it. Progress in one pillar strengthens the other two."
         />
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid items-stretch gap-4 lg:grid-cols-3">
           <Tile href="/viksit-vidyarthi#pillars-student" className="bg-saffron text-[#1f1000]" title="Student development" text="Self-aware, responsible and career-conscious students, from digital discipline to resilience." />
           <Tile href="/viksit-vidyarthi#pillars-teacher" className="bg-white text-ink shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]" title="Teacher empowerment" text="Educators equipped to guide Gen Z and Gen Alpha with dignity, diversity and trust." />
-          <Tile href="/viksit-vidyarthi#pillars-parent" className="bg-green text-white" title="Parent engagement" text="Parents as developmental partners in a child’s education and career journey." />
+          <Tile
+            href="/viksit-vidyarthi#pillars-parent"
+            className="bg-green text-white"
+            title="Parent engagement"
+            text={
+              <>
+                Parents as developmental partners in a child’s education and career journey.
+                <span className="block h-[1.35em]" aria-hidden="true" />
+              </>
+            }
+          />
         </div>
       </section>
 
@@ -106,12 +117,12 @@ export default function HomePage() {
   );
 }
 
-function Tile({ href, className, title, text }: { href: string; className: string; title: string; text: string }) {
+function Tile({ href, className, title, text }: { href: string; className: string; title: string; text: ReactNode }) {
   return (
-    <Link href={href} className={`flex min-h-[280px] flex-col rounded-[32px] p-8 transition hover:-translate-y-1.5 ${className}`}>
-      <h3 className="mt-auto mb-2 font-display text-3xl font-bold tracking-tight">{title}</h3>
-      <p className="mb-6 opacity-85">{text}</p>
-      <span className="inline-flex items-center gap-2 font-semibold">Explore <Arrow /></span>
+    <Link href={href} className={`flex h-full flex-col rounded-[32px] p-8 transition duration-200 hover:-translate-y-1.5 hover:shadow-xl ${className}`}>
+      <h3 className="mb-2 min-h-[2.35em] font-display text-[clamp(1.65rem,2.6vw,1.875rem)] leading-tight font-bold tracking-tight">{title}</h3>
+      <p className="mb-4 min-h-[5.25em] text-base leading-snug opacity-85">{text}</p>
+      <span className="mt-auto inline-flex items-center gap-2 font-semibold">Explore <Arrow /></span>
     </Link>
   );
 }

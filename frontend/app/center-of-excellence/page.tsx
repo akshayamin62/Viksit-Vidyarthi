@@ -77,7 +77,7 @@ export default function CentrePage() {
           {items.map((item, index) => {
             const selected = active === index;
             return (
-              <button key={item.title} className={`group flex min-h-[230px] flex-col rounded-[28px] p-6 text-left transition hover:-translate-y-1 ${selected ? "bg-ink text-white shadow-[0_18px_40px_-22px_rgba(10,16,48,.7)]" : "bg-white text-ink shadow-[0_16px_40px_-28px_rgba(10,16,48,.55)] ring-1 ring-ink/8"}`} type="button" aria-pressed={selected} onClick={() => setActive(index)}>
+              <button key={item.title} className={`group flex min-h-[230px] cursor-pointer flex-col rounded-[28px] p-6 text-left transition duration-200 hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] ${selected ? "bg-ink text-white shadow-[0_18px_40px_-22px_rgba(10,16,48,.7)]" : "bg-white text-ink shadow-[0_16px_40px_-28px_rgba(10,16,48,.55)] ring-1 ring-ink/8"}`} type="button" aria-pressed={selected} onClick={() => setActive(index)}>
                 <span className={`grid size-12 place-items-center rounded-2xl ${selected ? "bg-saffron text-[#1f1000]" : item.plate}`}>
                   <Ico className="size-6">{item.icon}</Ico>
                 </span>

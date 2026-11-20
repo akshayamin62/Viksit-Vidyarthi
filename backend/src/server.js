@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import nodemailer from "nodemailer";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -32,6 +33,16 @@ function mailSettings() {
 
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function brochurePath() {
+  const configured = (process.env.BROCHURE_PATH || "").trim();
+  if (configured && fs.existsSync(configured)) return configured;
+  const candidates = [
+    path.join(root, "assets", "Viksit_Vidyarthi_Two_Part_Corporate_Brochure.pdf"),
+    path.join(root, "..", "Viksit_Vidyarthi_Two_Part_Corporate_Brochure.pdf"),
+  ];
+  return candidates.find((candidate) => fs.existsSync(candidate)) || null;
 }
 
 function isPhone(value) {
@@ -140,6 +151,48 @@ app.post("/api/enquiry", async (req, res) => {
   }
 
   res.json({ ok: true });
+
+  const brochure = brochurePath();
+  const firstName = name.split(/\s+/)[0] || name;
+  if (!brochure) {
+    console.warn("Brochure PDF not found; thank-you email sent without attachment.");
+  }
+  transporter
+    .sendMail({
+      from: settings.from,
+      to: email,
+      replyTo: settings.to,
+      subject: "Thank you for your interest in Viksit Vidyarthi",
+      text: [
+        `Dear ${firstName},`,
+        "",
+        "Thank you for reaching out to ADMITra CORE Systems Pvt. Ltd. about Viksit Vidyarthi for Viksit Bharat.",
+        "",
+        `We have received your enquiry from ${institution}. Our team will review it and get in touch with you shortly.`,
+        "",
+        brochure
+          ? "Attached is our Viksit Vidyarthi corporate brochure for your reference. It outlines the programme pillars, institutional engagement model, and Centre of Excellence framework."
+          : "You can explore the full programme at https://viksitvidyarthi.com while our team prepares the next steps with you.",
+        "",
+        "If you have any immediate questions, reply to this email or call us at +91 70 459 19 074.",
+        "",
+        "Warm regards,",
+        "ADMITra CORE Systems Pvt. Ltd.",
+        "Viksit Vidyarthi – Viksit Bharat",
+        "hello@admitra.io",
+      ].join("\n"),
+      attachments: brochure
+        ? [
+            {
+              filename: "Viksit_Vidyarthi_Brochure.pdf",
+              path: brochure,
+            },
+          ]
+        : undefined,
+    })
+    .catch((error) => {
+      console.error("Thank-you email failed", error?.code || error?.message || "unknown");
+    });
 });
 
 const port = Number(process.env.PORT || 5016);
