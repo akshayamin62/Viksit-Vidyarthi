@@ -174,7 +174,7 @@ app.post("/api/enquiry", async (req, res) => {
           ? "Attached is our Viksit Vidyarthi corporate brochure for your reference. It outlines the programme pillars, institutional engagement model, and Centre of Excellence framework."
           : "You can explore the full programme at https://viksitvidyarthi.com while our team prepares the next steps with you.",
         "",
-        "If you have any immediate questions, reply to this email or call us at +91 70 459 19 074.",
+        "If you have any immediate questions, reply to this email or call us at +91 9601139256.",
         "",
         "Warm regards,",
         "ADMITra CORE Systems Pvt. Ltd.",
