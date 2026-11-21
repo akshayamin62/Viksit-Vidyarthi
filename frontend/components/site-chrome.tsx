@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { EnquiryProvider, useEnquiry } from "@/components/enquiry";
 import { btnInk, headerBtn } from "@/lib/ui";
 
@@ -94,32 +94,66 @@ function Header() {
   );
 }
 
+function FooterLegalLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a className="font-medium text-ink transition hover:text-ink-2 hover:underline" href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
+
 function Footer() {
   return (
-    <footer className="mt-3 rounded-t-[32px] bg-ink px-4 py-12 text-[#c9d0ee] sm:px-6 sm:py-16">
+    <footer className="mt-3 rounded-t-[32px] border-t border-ink/8 bg-white px-4 py-12 text-mute shadow-[0_-12px_40px_-28px_rgba(10,16,48,0.18)] sm:px-6 sm:py-16">
       <div className="mx-auto w-full max-w-[1200px]">
-        <div className="mb-9 flex flex-wrap items-center justify-between gap-6 border-b border-white/10 pb-9">
+        <div className="mb-9 flex flex-wrap items-center justify-between gap-6 border-b border-ink/10 pb-9">
           <Link href="/" className="shrink-0">
             <img src="/footer-logo.png" alt="ADMITra" className="h-14 w-auto max-w-[220px] object-contain" />
           </Link>
           <nav className="flex flex-wrap gap-x-7 gap-y-2" aria-label="Footer">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="font-medium text-white hover:underline">
+              <Link key={link.href} href={link.href} className="font-medium text-ink transition hover:text-ink-2 hover:underline">
                 {link.label}
               </Link>
             ))}
           </nav>
         </div>
         <div>
-          <strong className="font-display text-lg text-white">ADMITra CORE Systems Pvt. Ltd.</strong>
-          <p className="mt-2 text-[#9aa3cc]"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
-          <p className="mt-2 text-[#9aa3cc]">
-            <a className="text-white" href="tel:+917045919074">+91 70 459 19 074</a>
+          <strong className="font-display text-lg text-ink">ADMITra CORE Systems Pvt. Ltd.</strong>
+          <p className="mt-2 text-mute"># 413, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
+          <p className="mt-2 text-mute">
+            <a className="font-medium text-ink transition hover:text-ink-2 hover:underline" href="tel:+919601139256">
+              +91 9601139256
+            </a>
             {" · "}
-            <a className="text-white" href="mailto:hello@admitra.io">hello@admitra.io</a>
+            <a className="font-medium text-ink transition hover:text-ink-2 hover:underline" href="mailto:hello@admitra.io">
+              hello@admitra.io
+            </a>
           </p>
-          <p className="mt-4 max-w-2xl text-[#9aa3cc]">An independent institutional student development initiative.</p>
-          <p className="mt-4 max-w-2xl text-[#9aa3cc]">No government endorsement is implied.</p>
+          <p className="mt-4 max-w-2xl text-mute">
+            An independent institutional student development initiative. No government endorsement is implied.
+          </p>
+        </div>
+        <div className="mt-10 border-t border-ink/10 pt-6 text-sm text-mute">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-2">
+            <span className="text-ink">© 2026 ADMITra. All Rights Reserved.</span>
+            <span className="hidden text-ink/25 sm:inline" aria-hidden="true">
+              |
+            </span>
+            <FooterLegalLink href="https://admitra.io/privacy-policy.html">Privacy Policy</FooterLegalLink>
+            <span className="text-ink/25" aria-hidden="true">
+              |
+            </span>
+            <FooterLegalLink href="https://admitra.io/disclaimer.html">Disclaimer</FooterLegalLink>
+            <span className="text-ink/25" aria-hidden="true">
+              |
+            </span>
+            <FooterLegalLink href="https://admitra.io/cookies.html">Cookies</FooterLegalLink>
+            <span className="text-ink/25" aria-hidden="true">
+              |
+            </span>
+            <FooterLegalLink href="https://admitra.io/sitemap.html">Sitemap</FooterLegalLink>
+          </p>
         </div>
       </div>
     </footer>
