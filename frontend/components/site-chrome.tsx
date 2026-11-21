@@ -149,10 +149,6 @@ function Footer() {
               |
             </span>
             <FooterLegalLink href="https://admitra.io/cookies.html">Cookies</FooterLegalLink>
-            <span className="text-ink/25" aria-hidden="true">
-              |
-            </span>
-            <FooterLegalLink href="https://admitra.io/sitemap.html">Sitemap</FooterLegalLink>
           </p>
         </div>
       </div>
