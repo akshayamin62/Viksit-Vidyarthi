@@ -110,17 +110,16 @@ function Footer() {
             ))}
           </nav>
         </div>
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
-          <div>
-            <strong className="font-display text-lg text-white">ADMITra CORE Systems Pvt. Ltd.</strong>
-            <p className="mt-2 text-[#9aa3cc]"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
-            <p className="mt-2 text-[#9aa3cc]">
-              <a className="text-white" href="tel:+917045919074">+91 70 459 19 074</a>
-              {" · "}
-              <a className="text-white" href="mailto:hello@admitra.io">hello@admitra.io</a>
-            </p>
-          </div>
-          <p className="self-end text-[#9aa3cc]">An independent institutional student development initiative. No government endorsement is implied.</p>
+        <div>
+          <strong className="font-display text-lg text-white">ADMITra CORE Systems Pvt. Ltd.</strong>
+          <p className="mt-2 text-[#9aa3cc]"># 412, Rajshree Center, Opposite Hotel Effotel, Near Kalaghoda, Vadodara – 390020</p>
+          <p className="mt-2 text-[#9aa3cc]">
+            <a className="text-white" href="tel:+917045919074">+91 70 459 19 074</a>
+            {" · "}
+            <a className="text-white" href="mailto:hello@admitra.io">hello@admitra.io</a>
+          </p>
+          <p className="mt-4 max-w-2xl text-[#9aa3cc]">An independent institutional student development initiative.</p>
+          <p className="mt-4 max-w-2xl text-[#9aa3cc]">No government endorsement is implied.</p>
         </div>
       </div>
     </footer>

@@ -227,9 +227,8 @@ export default function ViksitPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1200px] px-6 pb-24">
-        <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] font-semibold tracking-tight text-ink">
-          Features, advantages
-          <span className="block">and benefits</span>
+        <h2 className="font-display text-[clamp(1.2rem,2.8vw,3.2rem)] leading-[1.05] font-semibold tracking-tight text-nowrap text-ink">
+          Features, advantages and benefits
         </h2>
         <div className="mt-6 inline-flex max-w-full flex-wrap gap-1 rounded-full bg-ink/10 p-1">
           <button className={`${tabButton} ${audience === "students" ? "bg-white text-ink shadow hover:shadow-lg" : "text-mute hover:bg-white/80 hover:text-ink"}`} type="button" onClick={() => setAudience("students")}>
@@ -248,7 +247,7 @@ export default function ViksitPage() {
           {rows.map((row) => (
             <div key={row[0]} className="grid gap-2 md:grid-cols-3">
               {row.map((cell, index) => (
-                <span key={cell} className={`rounded-xl px-5 py-4 ${index === 0 ? "bg-[#fff1e0] font-display font-bold text-[#1f1000]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>
+                <span key={cell} className={`rounded-xl px-5 py-4 text-base font-normal leading-snug ${index === 0 ? "bg-[#fff1e0] text-[#1f1000]" : index === 2 ? "bg-[#e2f5ea] text-[#0a6e3d]" : "bg-white text-mute shadow-[inset_0_0_0_1px_rgba(10,16,48,.1)]"}`}>
                   <span className="mb-1 block text-xs font-semibold tracking-wide uppercase md:hidden">{["Feature", "Advantage", "Benefit"][index]}</span>
                   {cell}
                 </span>
@@ -294,12 +293,7 @@ export default function ViksitPage() {
 
       <section className="mx-auto w-full max-w-[1200px] px-6 pb-24">
         <SectionHead
-          title={
-            <>
-              The advantages
-              <span className="block">in a nutshell</span>
-            </>
-          }
+          title={<span className="text-nowrap">The advantages in a nutshell</span>}
           text="Institutions move from providing education to becoming active partners in building students’ futures."
         />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
